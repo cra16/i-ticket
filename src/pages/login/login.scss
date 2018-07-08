@@ -1,0 +1,27 @@
+page-login {
+  ion-content {
+    text-align: center ;
+  }
+  .logo {
+    margin-top : 200px ;
+    text-align: center ;
+    transform: rotate(90deg) ;
+    .cls-1 {
+      fill: #4a4747;
+      font-size: 83px;
+      font-family: "Noto Sans", "Noto Sans CJK KR";
+    }
+  }
+  .button {
+    color : white;
+    left: 0;
+    right: 0;
+    position: absolute;
+    bottom: 100px;
+    // margin-top : 100px;
+    text-align: center;
+    img {
+      height : 48px;
+    }
+  }
+}

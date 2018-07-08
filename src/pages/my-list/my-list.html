@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-navbar>
+    <span class="title">내 공연 목록</span>
+    <button class="top-button" menuToggle end>
+      <img src="assets/icon/icon-ticket.svg">
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-xl-3>
+        <ion-list *ngIf="notyet_num">
+          <ion-item *ngFor="let list of concert_list; let i = index;" (click)="goTicketInfoPage(list.id)"
+          [ngClass]="{finished: list.status != ticket.BEFORE_PAYMENT, notYet: list.status == ticket.BEFORE_PAYMENT}">
+            <!--티켓구매리스트를 만들어야 함-->
+            <ion-thumbnail item-start>
+              <img class="thumb_img" src="{{ list.concert_obj['img'] }}">
+            </ion-thumbnail>
+            <ion-grid>
+              <ion-row class="First_row">
+                <ion-col>
+                  <p class="index">TITLE :</p>
+                  <span class="spantitle">{{ list.concert_obj['title'] }}</span> 
+                </ion-col>
+              </ion-row>
+              
+              <ion-row class="Second_row">
+                <ion-col col-8 class="dateClass">
+                  <p class="index">DATE : </p>
+                  <span>{{ list.date | date:'yy년 MM월 dd일 ' }}</span> 
+                </ion-col>
+                <ion-col class="timeClass">
+                  <p class="index">TIME : </p>
+                  <span>{{ list.date | date:'hh:mm' }} - {{ times[i] | date: 'hh:mm' }}</span> 
+                  <!-- {{ times[i] || date: 'hh:mm" }}  -->
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="Third_row">
+                <ion-col col-8 class="seatClass">
+                  <p class="index">SEAT : </p>
+                  <span *ngFor="let seat of list.seats"> {{ seat.info }}, </span>
+                </ion-col>
+                <ion-col col-auto class="statusClass">
+                  <p class="index">STATUS : </p>
+                  <span [ngClass]="{red: list.status == ticket.BEFORE_PAYMENT, green: list.status != ticket.BEFORE_PAYMENT}">{{ list.status == ticket.BEFORE_PAYMENT ? "입금 대기중" : "발권 완료" }}</span> 
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+
+      <ion-col col-12 col-sm class="finishedConcert">
+        <ion-list *ngIf="done_num">
+          <ion-list-header style="font-weight:bold;">
+            지난 공연
+          </ion-list-header>
+          <ion-item *ngFor="let list of closed_list; let i = index;">
+            <!--티켓구매리스트를 만들어야 함-->
+            <ion-thumbnail item-start>
+              <img class="thumb_img" src="{{ list.concert_obj['img'] }}">
+            </ion-thumbnail>
+
+            <ion-row class="First_row">
+              <ion-col class="First_row_content">
+                <p>TITLE :</p>
+                <span class="spantitle">{{ list.concert_obj['title'] }}</span> 
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="Second_row">
+              <ion-col col-8>
+                <p>DATE : </p>
+                <span>{{ list.date | date:'yy년 MM월 dd일 ' }}</span> 
+              </ion-col>
+              <ion-col>
+                <p>TIME : </p>
+                <span>{{ list.date | date:'hh:mm' }} - {{ endTimes[i] | date: 'hh:mm'}}</span> 
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="Third_row">
+              <ion-col col-8>
+                <p>SEAT : </p>
+                <span *ngFor="let seat of list.seats"> {{ seat.info }} </span>
+              </ion-col>
+              <ion-col>
+                <p>STATUS : </p>
+                <span>종료된 공연</span> 
+              </ion-col>
+            </ion-row>
+          </ion-item>
+        </ion-list>
+
+        <ion-list *ngIf="(notyet_num==0)&&(done_num==0)">
+          <ion-item>
+            <p>구매한 티켓이 없습니다.</p>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

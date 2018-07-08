@@ -1,0 +1,51 @@
+page-seller-login {
+  .logo {
+    text-align: center ;
+    margin : auto ;
+    padding : 120px 0px 50px 0px ;
+    .cls-1 {
+      fill: $dominant-black;
+      font-size: 52px;
+      font-family: "Noto Sans", "Noto Sans CJK KR";
+      // font-family: NanumBarunGothic;
+    }
+  }
+  .form-icon {
+    width : 16px ;
+    height : 16px ;
+  }
+  .login-form {
+    ion-item{
+      padding-left: 0px;
+    }
+    padding-right: 15px;
+    padding-left: 15px;
+    // width : 320px ;
+    margin : auto ;
+    text-align: center ;
+    // margin-bottom : 200px ;
+  }
+  .find {
+    text-align: right ;
+    color : $dominant-main ;
+    margin-bottom: 150px ;
+  }
+  .signup {
+    text-align: center ;
+    color : $dominant-black ;
+    span {
+      color : $dominant-main ;
+    }
+  }
+  .login-button {
+    margin : auto ;
+    padding : 0 ;
+		width : 315px ;
+		height : 48px ;
+		font-size : 12px ;
+		color : white ;
+		background-color : $dominant-main ;
+		border-radius : 5px ;
+		box-shadow : 0px 5px 10px rgba(0, 0, 0, 0.2) ;
+  }
+}

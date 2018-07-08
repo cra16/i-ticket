@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="634.013 -678.516 65.866 65.866">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #49ccd4;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="icon-user" transform="translate(618.013 -702.516)">
+    <path id="패스_671" data-name="패스 671" class="cls-1" d="M32.933,0A32.933,32.933,0,1,1,0,32.933,32.933,32.933,0,0,1,32.933,0Z" transform="translate(16 24)"/>
+    <g id="icon-user-2" data-name="icon-user" transform="translate(39.523 47.523)">
+      <path id="합치기_1" data-name="합치기 1" class="cls-2" d="M0,18.819V16.467c0-2.588,4.234-4.705,9.41-4.705s9.41,2.117,9.41,4.705v2.352ZM4.7,4.705A4.7,4.7,0,1,1,9.41,9.41,4.705,4.705,0,0,1,4.7,4.705Z" transform="translate(0 0)"/>
+    </g>
+  </g>
+</svg>

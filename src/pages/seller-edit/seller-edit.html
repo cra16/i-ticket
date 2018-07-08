@@ -1,0 +1,140 @@
+<ion-header>
+  <ion-navbar>
+      <span class="title">공연 정보 수정</span>
+      <button class="top-button" menuToggle end>
+        <img src="assets/icon/icon-ticket.svg">
+      </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-item style="text-align:center;">
+      <img [src]="concert.img" style="width: 100%" [hidden]="image != null">
+      <img [src]="image" style="width: 100%" [hidden]="image == null">
+      <h3 [hidden]="image != null">이미지를 변경하려면 추가 해주세요.
+        <br> 미추가시 기존 이미지가 사용됩니다.
+      </h3>
+    </ion-item>
+    <ion-item style="text-align:center;">
+      <button ion-button (click)="presentActionSheet()">
+        <ion-icon name="add">
+        </ion-icon> 사진 변경
+      </button>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-item style="text-align:center;">
+          <ion-input type="text" [(ngModel)]="concert.title" placeholder="공연 제목"></ion-input>
+        </ion-item>
+      </ion-row>
+      <ion-row>
+        <ion-item style="text-align:center;">
+          <ion-label stacked>
+            공연일시
+          </ion-label>
+        </ion-item>
+        <!-- 날짜입력 창 표시(리팩토링 필요) -->
+        <ion-item>
+          <ion-datetime displayFormat="YYYY - MM - DD (DDD) HH:mm" min="2018" max="2019" placeholder="2018-01-01 (월) 18:00" [(ngModel)]="concert.date[0]">
+          </ion-datetime>
+        </ion-item>
+        <ion-item [hidden]="count==1">
+          <ion-datetime displayFormat="YYYY - MM - DD (DDD) HH:mm" min="2018" max="2019" placeholder="2018-01-01 (월) 18:00" [(ngModel)]="concert.date[1]">
+          </ion-datetime>
+          <button ion-button item-right (click)=deleteDatetime(1)>x</button>
+        </ion-item>
+        <ion-item [hidden]="(count==2)||(count==1)">
+          <ion-datetime displayFormat="YYYY - MM - DD (DDD) HH:mm" min="2018" max="2019" placeholder="2018-01-01 (월) 18:00" [(ngModel)]="concert.date[2]">
+          </ion-datetime>
+          <button ion-button item-right (click)=deleteDatetime(2)>x</button>
+        </ion-item>
+        <ion-item [hidden]="(count==3)||(count==2)||(count==1)">
+          <ion-datetime displayFormat="YYYY - MM - DD (DDD) HH:mm" min="2018" max="2019" placeholder="2018-01-01 (월) 18:00" [(ngModel)]="concert.date[3]">
+          </ion-datetime>
+          <button ion-button item-right (click)=deleteDatetime(3)>x</button>
+        </ion-item>
+        <ion-item [hidden]="(count==4)||(count==3)||(count==2)||(count==1)">
+          <ion-datetime displayFormat="YYYY - MM - DD (DDD) HH:mm" min="2018" max="2019" placeholder="2018-01-01 (월) 18:00" [(ngModel)]="concert.date[4]">
+          </ion-datetime>
+          <button ion-button item-right (click)=deleteDatetime(4)>x</button>
+        </ion-item>
+        <ion-item style="text-align:center;">
+          <button [disabled]="concert.date[4]!=null" ion-button (click)="addDatetime()">
+            <ion-icon name="add"></ion-icon> 날짜 추가
+          </button>
+        </ion-item>
+      </ion-row>
+      <!-- 장르 목록 불러오기 -->
+      <ion-row>
+        <ion-item style="text-align:center;">
+          <ion-select [(ngModel)]="concert.genre" placeholder="장르">
+            <ion-option *ngFor="let genre of genres">{{genre.genre}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+      <!-- 장소 목록 불러오기 -->
+      <ion-row>
+        <ion-item style="text-align:center;">
+          <ion-select [(ngModel)]="concert.location" placeholder="장소">
+            <ion-option *ngFor="let location of locations">{{location.location}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+      <!-- 판매상태 드롭다운 메뉴 표시 -->
+      <ion-row>
+        <ion-item style="text-align:center;">
+          <ion-select [(ngModel)]="concert.status" placeholder="판매상태">
+            <ion-option *ngFor="let status of statuses">{{status.status}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-row>
+      <!-- 러닝타임 입력  -->
+      <ion-item style="text-align:center;">
+        <ion-label stacked>
+          러닝타임
+        </ion-label>
+        <ion-input placeholder="90(분 단위)" [(ngModel)]="concert.runningTime"></ion-input>
+      </ion-item>
+      <!-- 가격 선택바 이용해서 가격 선택 -->
+      <ion-item style="text-align:center;">
+        <ion-label stacked>
+          가격
+          <ion-badge item-end color="dark">{{concert.price}}</ion-badge>
+        </ion-label>
+        <ion-range min="0" max="5000" step="500" snaps="true" [(ngModel)]="concert.price" color="dom">
+          <ion-icon range-left small color="dom" name="cash"></ion-icon>
+          <ion-icon range-right color="dom" name="cash"></ion-icon>
+        </ion-range>
+      </ion-item>
+    </ion-grid>
+  </ion-card>
+  <!-- <ion-grid>
+    <ion-row justify-content-center>
+      <button ion-button outline color="dark"> 좌석설정 </button>
+    </ion-row>
+  </ion-grid> -->
+  <!-- 공연정보 입력 input area  -->
+  <h6>공연정보</h6>
+  <ul>
+    <span>
+      <ion-textarea rows="19" type="text" placeholder="공연 정보를 간략히 소개해주세요." [(ngModel)]="concert.overview"></ion-textarea>
+    </span>
+  </ul>
+  <!-- 출연정보 입력 input area -->
+  <h6>출연진</h6>
+  <ul>
+    <span>
+      <ion-input placeholder="감독 및 연출 : 김태호" [(ngModel)]="concert.director"></ion-input>
+    </span>
+    <span>
+      <ion-input placeholder="출연 : 유재석, 박명수, 정준하, 하하" [(ngModel)]="concert.actor"></ion-input>
+    </span>
+  </ul>
+  <!-- 정보 수정 후 업데이트 펑션 부르는 버튼 -->
+  <ion-grid>
+    <ion-row justify-content-center>
+      <button ion-button full color="dom" (click)="updateConcert()"> 판매 수정 </button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

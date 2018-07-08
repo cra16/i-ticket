@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <span class="title">판매자 회원가입</span>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="logo">
+    <img src="assets/icon/icon-i-ticket-horizontal.svg">
+  </div>
+
+  <form class="find-form" [formGroup]="signupForm" (submit)="signupUser()" novalidate>
+    <ion-item>
+      <ion-label>
+        <img class="form-icon" src="assets/icon/icon-user.svg">
+      </ion-label>
+      <ion-input formControlName="name" type="name" placeholder="단체명    (e.g. CRA)"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <img class="form-icon" src="assets/icon/icon-mail.svg">
+      </ion-label>
+      <ion-input formControlName="email" type="email" placeholder="example@gmail.com" [class.invalid]="!signupForm.controls.email.valid && blur">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!signupForm.controls.email.valid && signupForm.controls.email.touched">
+      <p>유효한 메일을 입력해주세요.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <img class="form-icon" src="assets/icon/icon-pwd.svg">
+      </ion-label>
+      <ion-input formControlName="password" type="password" placeholder="password" [class.invalid]="!signupForm.controls.password.valid && blur">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!signupForm.controls.password.valid  &&  signupForm.controls.password.touched">
+      <p>6자 이상으로 비밀번호를 입력해주세요.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <img class="form-icon" src="assets/icon/icon-pwd.svg">
+      </ion-label>
+      <ion-input formControlName="password2" type="password" placeholder="password check" [class.invalid]="!signupForm.controls.password2.valid && signupForm.controls.password2.dirty">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!signupForm.controls.password2.valid && signupForm.controls.password2.dirty">
+      <p>비밀번호가 일치하지 않습니다.</p>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <img class="form-icon" src="assets/icon/icon-phone2.svg">
+      </ion-label>
+      <ion-input formControlName="phoneNumber" type="phoneNumber" placeholder="010-1234-1234"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!signupForm.controls.phoneNumber.valid  &&  signupForm.controls.phoneNumber.touched">
+      <p>010-1234-1234의 형태로 입력해주세요</p>
+    </ion-item>
+    <button class="signup-button" type="submit" [disabled]="!signupForm.valid">
+      Create an Account
+    </button>
+  </form>
+  
+</ion-content>

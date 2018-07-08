@@ -1,0 +1,112 @@
+page-seller-register {
+    ion-navbar{
+        box-shadow : 0px 5px 10px rgba(0, 0, 0, 0.1) ;
+    }
+    ion-datetime{
+        text-align:center !important;
+        padding-left: 65px  !important;
+    }
+    ion-item.item.item-block.item-select{
+        padding-left:125px;
+    }
+    button.disable-hover.item-button.button{
+        background-color: $dominant-main ;
+    }
+    ion-select.select{
+        max-width:130px !important;
+        padding-left: 0px;
+        div.select-icon{
+            width: 15px !important;
+        }
+    }
+    ion-input{
+        input{
+            text-align:center !important;
+        }
+    }
+    ::-webkit-input-placeholder {
+        font-size: 14px;
+        color: #d0cdfa;
+        text-transform: uppercase;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+       }
+       :-moz-placeholder { /* older Firefox*/
+        font-size:14px;
+        color: #d0cdfa;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+       }
+       ::-moz-placeholder { /* Firefox 19+ */ 
+        font-size: 14px;
+        color: #d0cdfa; 
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+       } 
+       :-ms-input-placeholder { 
+        font-size: 14px; 
+        color: #d0cdfa;
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+       }
+    .scroll-content{
+        padding: 0px !important;
+    }
+    h6{
+        font-weight: bold;
+        text-align: center;
+        
+    }
+    ul{
+        background-color:rgb(238,242,252);
+        padding-left: 0px;
+    }
+    ion-label{
+        font-weight: bold;
+        color: $dominant-black;
+    }
+    ion-textarea
+    {   
+        padding-top: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        height:400px;
+        .text-input{
+            height: 400px;
+        }
+        .input-cover{
+            height: 430px;
+        }
+    }
+    ion-grid{
+        color: $dominant-black;
+    }
+    span{
+        color: $dominant-black;
+    }
+    .card.overview {
+        height:400px
+    }
+    .card.actor {
+        height:400px
+    }
+    .ion-card-content{
+        height:300px
+    }
+    .item.year {
+        width: 50px
+        position relative;
+    }
+    .item.month {
+        width: 50px
+        position relative;
+    }
+    .item.day {
+        width: 50px
+        position relative;
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "i-ticket",
+  "app_id": "2f7fce63",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

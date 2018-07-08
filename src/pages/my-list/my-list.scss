@@ -1,0 +1,76 @@
+page-my-list {
+    ion-navbar {
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    ion-grid {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        ion-col {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+        .item-inner {
+            border-bottom: 0px !important;
+        }
+        ion-thumbnail {
+            margin-right: 15px !important;
+            .thumb_img {
+                // max-width: 100px;
+                height: 150px;
+                margin-bottom: 10px;
+                box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
+                border-radius: 3px;
+            }
+        }
+        span{
+            font-weight: bold;
+            font-size: 12px;
+         }
+    }
+    div.item-inner {
+        padding-right: 0px !important;
+    }
+    .finished {
+        padding-left: 13px;
+        height: 170px;
+        background-color: rgba(58,207,213,0.1) ;
+        margin-bottom: 12px;
+        border: 0px !important;
+        border-radius: 2px;
+    }
+    .notYet {
+        padding-left: 13px;
+        height: 170px;
+        background-color: rgba(245,79,98,0.1) ;
+        margin-bottom: 12px;
+        border: 0px !important;
+        border-radius: 2px;
+    }
+    .spantitle {
+        font-size: 18px;
+        font-weight: bold ;
+    }
+    .index {
+        color: $dominant-lightgray !important;
+        font-weight: bold ;
+    }    
+    .red {
+        color: $dominant-red;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    .green {
+        color: $dominant-main;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    .finishedConcert {
+        ion-list-header {
+            border: 0px;
+        }
+        ion-item {
+            border-bottom: 0px !important;
+            margin-bottom: 12px;
+        }
+    }
+}

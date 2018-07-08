@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <span class="title">판매자 정보 수정</span>
+    <button class="top-button" menuToggle end>
+      <img src="assets/icon/icon-ticket.svg">
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="image-box" (click)="presentActionSheet()">
+    <!-- 이미지가 등록되어있지 않을 때의 디폴트 이미지가 필요하겠군요 -->
+    <!-- 이미지를 업로드하면 보여주고, 업로드전에는 이미 등록되어있는 사진을 불러온다. -->
+    <img class="image" [src]="image ? image : user.getSellerImg()">
+    <div class="image-text">
+      단체 이미지를 변경하려면 이미지를 눌러 변경해주세요.<br>
+      미추가시 기존 이미지가 사용됩니다.<br>
+      하단의 "정보수정"을 눌러야 최종적으로 변경됩니다.
+    </div>
+  </div>
+  
+  <div class="info-box">
+    <div class="info-phone">
+      <label class="phone-label">핸드폰 번호</label>
+      <input class="phone-input" type="text" placeholder="010-1234-5678" [(ngModel)]="phoneNumber">
+    </div>
+    <textarea class="text" type="text" placeholder="단체 소개 내용을 입력해주세요 (1100자 이내)" [(ngModel)]="introduce"></textarea>
+  </div>
+
+  <ion-grid>
+    <ion-row justify-content-center>
+      <button color="dom" ion-button full (click)="updateSellerInfo()"> 정보수정 </button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

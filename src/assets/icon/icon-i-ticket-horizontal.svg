@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-1177 149 168 52">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4a4747;
+        font-size: 52px;
+        <!-- font-family: NanumBarunGothic; -->
+        font-family: "Noto Sans", "Noto Sans CJK KR";
+      }
+    </style>
+  </defs>
+  <text id="i-ticket" class="cls-1" transform="translate(-1093 191)"><tspan x="-83.278" y="0">i-ticket</tspan></text>
+</svg>

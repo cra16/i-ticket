@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar>
+    <div class="title">공연 정보</div>
+    <button class="top-button" menuToggle end>
+      <img src="assets/icon/icon-ticket.svg">
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab right bottom [hidden]="groupname!=username">
+    <button ion-fab color="secondary">
+      <ion-icon name="arrow-dropleft"></ion-icon>
+    </button>
+    <ion-fab-list side="left">
+      <button ion-fab color="secondary" (click)="editItem()">
+        <ion-icon name="create"></ion-icon>
+      </button>
+      <button ion-fab color="secondary" (click)="deleteItem()">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+
+  <div class="header-img">
+    <div class='wrapper'>
+      <!-- image -->
+      <img class="max-img" [src]="concert.img">
+    </div>
+    <img class="sub-img" [src]="concert.img">
+  </div>
+
+  <ion-grid class="header-content">
+    <ion-row justify-content-center>
+      <p class="date">
+        <label>
+          {{ concert['date'][0] | date:'yyyy-MM-dd' }} ~
+        </label>
+        <label>
+          {{ concert['date'][date_length] | date:'yyyy-MM-dd' }}
+        </label>
+      </p>
+    </ion-row>
+    <ion-row justify-content-center>
+      <h2 class="title" center>
+        {{concert.title}}
+      </h2>
+    </ion-row>
+    <ion-row justify-content-center>
+      <p class="genreTime">
+        {{concert.genre}} | {{concert.runningTime}} 분
+      </p>
+    </ion-row>
+    <ion-row>
+      <star-review [hidden]="concert_status!='종료된 공연'" [uid]="uid" [concertId]="concertId"></star-review>
+    </ion-row>
+    <ion-row justify-content-center>
+      <button class="last-header" *ngIf="concert_status=='판매 중'" [disabled]="user.getIsSeller()==true" ion-button round small (click)="goBookingPage(concert_idx)">
+        예매 하기
+      </button>
+      <button class="last-header will" *ngIf="concert_status=='판매 예정'" ion-button round small disabled (click)="goBookingPage(concert_idx)">
+        판매 예정
+      </button>
+      <button class="last-header past" *ngIf="concert_status=='종료된 공연'" ion-button round small disabled (click)="goBookingPage(concert_idx)">
+        종료된 공연
+      </button>
+    </ion-row>
+  </ion-grid>
+
+  <div class="content-bottom">
+    <ul>
+      <li>
+        <div class="overview">{{concert.overview}}</div>
+      </li>
+      <li>
+        <div class="director">감독 및 연출: {{concert.director}}</div>
+        <div class="actor">출연: {{concert.actor}}</div>
+        <div class="location">공연장소: {{concert.location}}</div>
+        <br>
+        <div>회차정보:</div>
+        <div *ngFor="let date of concert.date; let i = index;">{{i+1}}회차 : {{date | date:'yyyy년 MM월 dd일 hh시 mm분'}}</div>
+      </li>
+      <!-- 단체(동아리) 소개 시작 -->
+      <li class="group">
+        <div class="group-name">{{groupname}}</div>
+          <img class="group-image" [src]="sellerImg">
+        <div class="group-intro">{{sellerIntroduce}}</div>
+      </li>
+    </ul>
+  </div>
+</ion-content>

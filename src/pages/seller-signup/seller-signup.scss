@@ -1,0 +1,46 @@
+page-seller-signup {
+  .title{
+    font-weight: bold;
+    text-align: center;
+  }
+  .find-form{
+    padding-right:25px;
+    text-align: center ;
+  }
+  .logo {
+    margin : auto ;
+    padding : 55px 0px 50px 0px ;
+    width : 166px ;
+  }
+  .form-icon {
+    width : 16px ;
+    height : 16px ;
+  }
+  .find-form{
+    padding-left: 17px;
+  }
+  .signup-button {
+    margin-top : 80px ;
+    padding-left : 20px; ;
+		width : 315px ;
+		height : 48px ;
+		font-size : 12px ;
+		color : white ;
+		background-color : $dominant-main ;
+		border-radius : 5px ;
+		box-shadow : 0px 5px 10px rgba(0, 0, 0, 0.2) ;
+  }
+  .error-message {
+    min-height: 2.2rem;
+    p {
+      font-size: 60%;
+    }
+    ion-label {
+      margin: 2px 0;
+    }
+    .item-inner {
+      border-bottom: 0 !important;
+    }
+  }
+}
+  

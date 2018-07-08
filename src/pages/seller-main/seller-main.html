@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <span class="title">안녕하세요, {{username}}님</span>
+    <button class="top-button" menuToggle end>
+      <img src="assets/icon/icon-ticket.svg">
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <p class="title">
+      현재 관리 중인 공연
+    </p>
+    <hr class="line">
+    <ion-slides>
+      <ion-slide *ngFor="let slide of concert_list">
+				<img [src]="slide['img']" class="slide-image" (click)="goManagePage(slide)">
+				<ion-grid class="slide-info">
+					<ion-row>
+						<ion-col id="content">
+							<span id="title">{{slide['title']}}</span><br>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-slide>
+    </ion-slides>
+    <button (click)="addItem()">
+      공연추가
+    </button>
+  </div>
+</ion-content>

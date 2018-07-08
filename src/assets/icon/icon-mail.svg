@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-5913 -912 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="Messages" transform="translate(-5942 -1305)">
+    <rect id="사각형_117" data-name="사각형 117" class="cls-1" width="16" height="16" transform="translate(29 393)"/>
+    <path id="패스_50" data-name="패스 50" class="cls-2" d="M14,2H2L8,7ZM0,2A2.006,2.006,0,0,1,2,0H14a2.006,2.006,0,0,1,2,2v8a2.006,2.006,0,0,1-2,2H2a2.006,2.006,0,0,1-2-2Z" transform="translate(29 395)"/>
+  </g>
+</svg>

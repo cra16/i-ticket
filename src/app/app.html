@@ -1,0 +1,35 @@
+<ion-menu id="myMenu" [content]="content" side="right" persistent>
+  <div class="top">
+    <img src="../assets/icon/icon-user-sidemenu.svg">
+    <h3 class="username">{{user_id}}님</h3>
+    <p class="useremail">{{user_email}}</p>
+    <!-- 이쪽 부분을 수정하면 로그인 할 때마다 사이드 메뉴내에 표시되는 아이디가 바뀔텐데
+      현재는 여기가 수정이 안되어 있어서 로그아웃을 하고 다른 아이디로 로그인을 하더라도
+      사이드 메뉴 내에서 변화가 없다 -->
+  </div>
+  <div class="bottom">
+    <ion-list menuClose (click)="goMainPage()">
+      <img src="assets/icon/icon-home-sidemenu.svg">
+      <span>홈으로</span>
+      <img class="arrow" item-end src="assets/icon/icon-arrow.svg">
+    </ion-list>
+    <ion-list menuClose (click)="goMyListPage()">
+      <img src="assets/icon/icon-list-sidemenu.svg">
+      <span>내 공연 목록</span>
+      <img class="arrow" item-end src="assets/icon/icon-arrow.svg">
+    </ion-list>
+    <ion-list menuClose (click)="goSettingPage()">
+      <img src="assets/icon/icon-setting-sidemenu.svg">
+      <span> 설정 및 문의</span>
+      <img class="arrow" item-end src="assets/icon/icon-arrow.svg">
+    </ion-list>
+    <ion-list menuClose (click)="Logout()">
+      <img src="assets/icon/icon-logout-sidemenu.svg">
+      <span>로그아웃</span>
+      <img class="arrow" item-end src="assets/icon/icon-arrow.svg">
+    </ion-list>
+  </div>
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

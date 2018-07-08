@@ -1,0 +1,23 @@
+page-seller-main {
+  .content {
+    text-align: center ;
+    .title {
+      font-size: 18px ;
+    }
+    .line {
+      width: 60% ;
+      background-color: $dominant-main ;
+    }
+    .slide-image {
+      width : 280px ;
+      max-height : 420px ;
+      margin-bottom : 10px ;
+      box-shadow : 0px 5px 10px rgba(0, 0, 0, 0.5) ;
+    }
+    .slide-image + .slide-info {
+      text-align: center;
+      width : 280px ;
+    }
+  }
+  
+}

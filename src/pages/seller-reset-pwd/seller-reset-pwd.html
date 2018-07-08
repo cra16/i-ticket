@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar>
+    <span class="title">아이디/비밀번호 찾기</span>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="logo">
+    <img src="assets/icon/icon-i-ticket-horizontal.svg">
+  </div>
+
+  <form class="find-form" [formGroup]="resetPasswordForm" (submit)="resetPassword()" novalidate>
+    <ion-item>
+      <ion-label><img class="form-icon" src="assets/icon/icon-user.svg"></ion-label>
+      <ion-input formControlName="email" type="email" placeholder="Your email address"
+                [class.invalid]="!resetPasswordForm.controls.email.valid && 
+                resetPasswordForm.controls.email.dirty">
+      </ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!resetPasswordForm.controls.email.valid && resetPasswordForm.controls.email.dirty"> 
+      <p>Please enter a valid email.</p>
+    </ion-item>
+
+    <button class="reset-button" type="submit" [disabled]="!resetPasswordForm.valid">
+      Reset your Password
+    </button>
+
+  </form>
+</ion-content>

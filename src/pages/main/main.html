@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-navbar>
+		<span class="title">안녕하세요, {{user_name}}님</span>
+		<button class="top-button" menuToggle end>
+			<img src="assets/icon/icon-ticket.svg">
+		</button>
+	</ion-navbar>
+	<ion-segment class="top-segment" [(ngModel)]="concerts">
+		<ion-segment-button class="noLine" value="now">현재 공연</ion-segment-button>
+		<ion-segment-button class="noLine" value="will">예정 공연</ion-segment-button>
+		<ion-segment-button class="noLine" value="past">지난 공연</ion-segment-button>
+		<ion-segment-button disabled class="noLine" value="null"></ion-segment-button>
+		<ion-segment-button disabled class="noLine" value="null"></ion-segment-button>
+		<ion-segment-button class="noLine" (click)="goListPage()">모두 보기</ion-segment-button>
+	</ion-segment>
+</ion-header>
+
+<ion-content class="main-page">
+	<div class="slides" [ngSwitch]="concerts">
+		<!-- 현재 공연 -->
+		<ion-slides *ngSwitchCase="'now'">
+			<ion-slide class="slide-content" *ngFor="let slide of list_now | async">
+        <div class="slide-image">
+				  <img src={{slide.img}} (click)="goDetailPage(slide)">
+        </div>
+				<ion-grid class="slide-info">
+					<ion-row>
+						<ion-col class="content">
+							<span class="title">{{slide.title}}</span><br>
+							<span class="date">{{slide.date[0] | date:'yy.MM.dd (EEE)'}}</span>
+						</ion-col>
+						<ion-col class="button">
+							<button class="btn-goBooking" (click)="goBookingPage(slide)">구매하러가기</button>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-slide>
+		</ion-slides>
+		<!-- 예정 공연 -->
+		<ion-slides *ngSwitchCase="'will'">
+			<ion-slide *ngFor="let slide of list_will | async">
+        <div class="slide-image">
+				  <img src={{slide.img}} (click)="goDetailPage(slide)">
+        </div>
+				<ion-grid class="slide-info">
+					<ion-row>
+						<ion-col class="content">
+							<span class="title">{{slide.title}}</span><br>
+							<span class="date">{{slide.date[0] | date:'yy.MM.dd (EEE)'}}</span>
+						</ion-col>
+						<ion-col>
+							<button class="btn-goBooking will">판매 예정</button>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-slide>
+		</ion-slides>
+		<!-- 지난 공연 -->
+		<ion-slides *ngSwitchCase="'past'">
+			<ion-slide *ngFor="let slide of list_past | async">
+        <div class="slide-image">
+				  <img src={{slide.img}} (click)="goDetailPage(slide)">
+        </div>
+				<ion-grid class="slide-info">
+					<ion-row>
+						<ion-col class="content">
+							<span class="title">{{slide.title}}</span><br>
+							<span class="date">{{slide.date[0] | date:'yy.MM.dd (EEE)'}}</span>
+						</ion-col>
+						<ion-col>
+							<button class="btn-goBooking past">종료된 공연</button>
+						</ion-col>
+					</ion-row>
+				</ion-grid>
+			</ion-slide>
+		</ion-slides>
+	</div>
+</ion-content>
