@@ -30,6 +30,8 @@ plugins/ios.json
 www/
 $RECYCLE.BIN/
 
+# key files
+src/key/
 google-services.json
 firebaseKey.ts
 
