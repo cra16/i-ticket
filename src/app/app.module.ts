@@ -37,7 +37,7 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { SellerMyListPage } from '../pages/seller-my-list/seller-my-list';
 import { SellerSettingPage } from '../pages/seller-setting/seller-setting';
 
-import { firebaseKey } from './firebaseKey';
+import { firebaseKey } from '../key/firebaseKey';
 export const firebaseConfig = {
       apiKey: firebaseKey['apiKey'],
       authDomain: firebaseKey['authDomain'],

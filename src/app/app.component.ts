@@ -27,7 +27,7 @@ import { Toast } from 'ionic-angular/components/toast/toast';
 import { SellerSettingPage } from '../pages/seller-setting/seller-setting';
 import { SellerMyListPage } from '../pages/seller-my-list/seller-my-list' ;
 
-import { firebaseKey } from './firebaseKey';
+import { firebaseKey } from '../key/firebaseKey';
 firebase.initializeApp({
   apiKey: firebaseKey['apiKey'],
   authDomain: firebaseKey['authDomain'],
