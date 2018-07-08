@@ -11,6 +11,10 @@ I-TICKET은 대학생 누구나 공연 정보를 등록하고, 공연 티켓을 
 대학생이라면 누구든 현재 하고 있는, 이미 종료된 공연들을 열람할 수 있습니다.
 현재 판매 중인 공연이라면, 손쉽게 공연 티켓을 구매할 수 있습니다.
 
+## History
+Jan  4, 2018 : start project: i-ticket
+July 8, 2018 : change private to public
+
 ## License
 Copyright (C) 2018-present HGU-CRA, i-ticket
 
