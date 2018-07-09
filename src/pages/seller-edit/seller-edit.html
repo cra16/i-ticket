@@ -35,6 +35,7 @@
           </ion-label>
         </ion-item>
         <!-- 날짜입력 창 표시(리팩토링 필요) -->
+        <!-- 삭제시에 널값이저장되는것이 아니라 아예지워지게 -->
         <ion-item>
           <ion-datetime displayFormat="YYYY - MM - DD (DDD) HH:mm" min="2018" max="2019" placeholder="2018-01-01 (월) 18:00" [(ngModel)]="concert.date[0]">
           </ion-datetime>
