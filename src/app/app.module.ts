@@ -70,7 +70,14 @@ export const firebaseConfig = {
     BrowserModule,
     IonicModule.forRoot(MyApp, {
       menuType: 'overlay',
-      pageTransition: 'ios-transition'
+      pageTransition: 'ios-transition',
+      // TODO : icon 수정
+      backButtonIcon: 'assets/icon/icon-ticket.svg',
+      // // iconMode: 'ios',
+      // modalEnter: 'modal-slide-in',
+      // modalLeave: 'modal-slide-out',
+      // tabbarPlacement: 'bottom',
+      backButtonText: 'BACK',
     }),
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig),
