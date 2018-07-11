@@ -1,17 +1,9 @@
 <ion-content padding>
-  <div class="logo">
+  <div class="login-logo">
     <span id="i-ticket" class="cls-1">i-ticket</span>
   </div>
-  <div class="button">
-    <!-- <a id="custom-login-btn" href="javascript:loginWithKakao()">
-      <img src="//mud-kage.kakao.com/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg">
-    </a> -->
-    <!-- <img (click)="auth.googleLogin()" src="assets/icon/icon-google.png"> -->
-    <!-- <button ion-button block (click)="auth.googleLogin()"> -->
-      <!-- <ion-icon name="logo-google"></ion-icon> -->
-      <img src="assets/icon/icon-google.png" (click)="auth.googleLogin()">
-      <!-- 구글 아이디로 로그인 -->
-    <!-- </button> -->
-    <p class="SellerLogin" (click)="goToSellerLogin()">판매자로 로그인</p>
+  <div class="login-button">
+    <img class="google-login-button" src="assets/icon/icon-google.png" (click)="auth.googleLogin()">
+    <p class="seller-login-button" (click)="goToSellerLoginPage()">판매자로 로그인</p>
   </div>
 </ion-content>

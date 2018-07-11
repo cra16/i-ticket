@@ -1,32 +1,31 @@
 page-login {
-  ion-content {
+  .login-logo {
     text-align: center ;
-  }
-  .logo {
-    // margin-top : 200px ;
-    text-align: center ;
-    // transform: rotate(90deg) ;
-
     position: relative;
     left: 0;
     right: 0;
     top: 30%;
-    .cls-1 {
-      fill: #4a4747;
-      font-size: 83px;
+    #i-ticket {
+      fill: $dominant-black;
+      font-size: 6rem;
       font-family: "Noto Sans", "Noto Sans CJK KR";
     }
   }
-  .button {
+  .login-button {
     color : $dominant-black;
+    position: absolute;
     left: 0;
     right: 0;
-    position: absolute;
     bottom: 10%;
-    // margin-top : 100px;
     text-align: center;
-    img {
-      height : 48px;
+
+    .google-login-button {
+      height : 4rem;
+    }
+    .seller-login-button {
+      font-family: "Noto Sans", "Noto Sans CJK KR";
+      margin-top: 0px;
+      font-size: 1.2rem;
     }
   }
 }
