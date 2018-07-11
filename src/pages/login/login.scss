@@ -3,9 +3,14 @@ page-login {
     text-align: center ;
   }
   .logo {
-    margin-top : 200px ;
+    // margin-top : 200px ;
     text-align: center ;
-    transform: rotate(90deg) ;
+    // transform: rotate(90deg) ;
+
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 30%;
     .cls-1 {
       fill: #4a4747;
       font-size: 83px;
@@ -13,11 +18,11 @@ page-login {
     }
   }
   .button {
-    color : white;
+    color : $dominant-black;
     left: 0;
     right: 0;
     position: absolute;
-    bottom: 100px;
+    bottom: 10%;
     // margin-top : 100px;
     text-align: center;
     img {
