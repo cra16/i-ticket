@@ -1,55 +1,78 @@
 page-seller-login {
-  .logo {
+  .login-logo {
     text-align: center ;
     margin : auto ;
     padding : 120px 0px 50px 0px ;
-    .cls-1 {
+    #i-ticket {
       fill: $dominant-black;
-      font-size: 52px;
+      font-size: 6rem;
       font-family: "Noto Sans", "Noto Sans CJK KR";
-      // font-family: NanumBarunGothic;
     }
-  }
-  .form-icon {
-    width : 16px ;
-    height : 16px ;
   }
   .login-form {
     text-align: center !important;
+    input.text-input.text-input-ios {
+      margin-left: 8px;
+    }
+    .form-icon {
+      width : 16px ;
+      height : 16px ;
+    }
     ion-item{
       padding-left: 0px;
     }
-    padding-right: 15px;
-    padding-left: 15px;
+    padding: 0 5%;
     // width : 320px ;
     margin : auto ;
     // margin-bottom : 200px ;
+
+    ion-item.error-message.item.item-block.item-ios,
+    ion-item.error-message.item.item-block.item-md {
+      .item-inner {
+        border: 0;
+      }
+      ion-label.label.label-ios,
+      ion-label.label.label-md {
+        p {
+          font-size: 1rem;
+          color: $dominant-red !important;
+        }
+      }
+    }
   }
   .find {
     text-align: right ;
     color : $dominant-main ;
     margin-bottom: 150px ;
   }
-  .signup {
-    text-align: center ;
-    color : $dominant-black ;
-    span {
-      color : $dominant-main ;
+  .login-button {
+    width : 100% ;
+    color : $dominant-black;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10%;
+    text-align: center;
+    padding: 0 5%;
+    .seller-login-button {
+      // margin : auto ;
+      padding : 0 ;
+      width : 100% ;
+      // height : 48px ;
+      height : 4rem;
+      font-size : 12px ;
+      color : white ;
+      background-color : $dominant-main ;
+      border-radius : 5px ;
+      box-shadow : 0px 5px 10px rgba(0, 0, 0, 0.2) ;
+    }
+    .seller-signup-button {
+      text-align: center ;
+      color : $dominant-black ;
+      span {
+        color : $dominant-main ;
+      }
     }
   }
-  .button {
-    width : 100% ;
-
-  }
-  .login-button {
-    // margin : auto ;
-    padding : 0 ;
-		width : 100% ;
-		height : 48px ;
-		font-size : 12px ;
-		color : white ;
-		background-color : $dominant-main ;
-		border-radius : 5px ;
-		box-shadow : 0px 5px 10px rgba(0, 0, 0, 0.2) ;
-  }
+  
 }

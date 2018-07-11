@@ -1,10 +1,10 @@
 <ion-content padding>
-  <div class="logo">
+  <div class="login-logo">
     <span id="i-ticket" class="cls-1">i-ticket</span>
   </div>
 
   <!-- <form [formGroup]="loginForm" (submit)="loginUser()" novalidate> -->
-  <form class="login-form" [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+  <form class="login-form" [formGroup]="loginForm" (submit)="SellerLogin()" novalidate>
     <ion-item>
       <ion-label><img class="form-icon" src="assets/icon/icon-mail.svg"></ion-label>
       <ion-input formControlName="email" type="email" placeholder="example@handong.edu"
@@ -26,11 +26,12 @@
       <!-- <p>Your password needs more than 6 characters.</p> -->
       <p>비밀번호는 6자 이상의 영문자이어야합니다.</p>
     </ion-item>
-    
-    <p class="find" (click)="goToSellerResetPwd()">Forgot password?</p>
-    <div class="button">
-      <button full class="login-button" type="submit" [disabled]="!loginForm.valid">로그인</button>
-      <p class="signup" (click)="goToSellerSignup()">Don't have an account? <span>SIGN UP</span></p>
+
+    <p class="find" (click)="goToSellerResetPwdPage()">Forgot password?</p>
+
+    <div class="login-button">
+      <button full class="seller-login-button" type="submit" [disabled]="!loginForm.valid">로그인</button>
+      <p class="seller-signup-button" (click)="goToSellerSignupPage()">Don't have an account? <span>SIGN UP</span></p>
     </div>
   </form>
 </ion-content>

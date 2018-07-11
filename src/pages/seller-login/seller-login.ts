@@ -1,14 +1,16 @@
+// Module
 import { Component } from '@angular/core';
-import { IonicPage, Loading, LoadingController, NavController, Alert, AlertController, MenuController } from 'ionic-angular';
+import { IonicPage, Loading, LoadingController,
+         NavController, Alert, AlertController, MenuController } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { EmailValidator } from '../../validators/email';
-import { AuthProvider } from '../../providers/auth/auth';
-import { MainPage } from '../main/main';
-
-import firebase from 'firebase';
 import { Platform } from 'ionic-angular/platform/platform';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+// Validator
+import { EmailValidator } from '../../validators/email';
+// Provider
+import { AuthProvider } from '../../providers/auth/auth';
+// Page
+import { MainPage } from '../main/main';
 
 @IonicPage()
 @Component({
@@ -18,16 +20,12 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 export class SellerLoginPage {
   public loginForm: FormGroup;
   public loading: Loading;
-  constructor(public navCtrl: NavController,
-    public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController,
-    public authProvider: AuthProvider,
-    formBuilder: FormBuilder,
-    public menu: MenuController,
-    public afs: AngularFirestore,
-    public platform: Platform,
-    private screen: ScreenOrientation) {
-    // Lock vertical screen             
+
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController, public authProvider: AuthProvider,
+    public formBuilder: FormBuilder, public menu: MenuController,
+    public platform: Platform, private screen: ScreenOrientation) {
+    // Lock vertical screen
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
     // this.screen.lock('portrait');
@@ -37,6 +35,7 @@ export class SellerLoginPage {
       this.navCtrl.pop();
       backAction();
     }, 2)
+
     this.menu = menu;
     // this.menu.enable(false,'myMenu')
     // 위의 문장을 주석 처리하면 Sidemenu가 사용 가능해짐
@@ -47,15 +46,15 @@ export class SellerLoginPage {
 
   }
 
-  goToSellerSignup(): void {
+  goToSellerSignupPage() {
     this.navCtrl.push('SellerSignupPage');
   }
 
-  goToSellerResetPwd(): void {
+  goToSellerResetPwdPage() {
     this.navCtrl.push('SellerResetPwdPage');
   }
 
-  loginUser(): void {
+  SellerLogin() {
     if (!this.loginForm.valid) {}
     else {
       const email = this.loginForm.value.email;
