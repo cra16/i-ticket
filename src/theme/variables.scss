@@ -56,14 +56,14 @@ $dominant-lightgray:#c1c1c1 ;
 // --------------------------------------------------
 // iOS only Sass variables can go here
 $segment-button-ios-background-color-activated : transparent ;
-$segment-button-ios-text-color : black ;
+$segment-button-ios-text-color : $dominant-black ;
 
 
 
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
-$segment-button-md-text-color-activated : black ;
+$segment-button-md-text-color-activated : $dominant-black ;
 
 
 

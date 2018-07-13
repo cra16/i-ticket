@@ -5,10 +5,6 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="logo">
-    <img src="assets/icon/icon-i-ticket-horizontal.svg">
-  </div>
-
   <form class="find-form" [formGroup]="signupForm" (submit)="signupUser()" novalidate>
     <ion-item>
       <ion-label>
@@ -54,12 +50,12 @@
       <ion-label>
         <img class="form-icon" src="assets/icon/icon-phone2.svg">
       </ion-label>
-      <ion-input formControlName="phoneNumber" type="phoneNumber" placeholder="010-1234-1234"></ion-input>
+      <ion-input formControlName="phoneNumber" type="phoneNumber" placeholder="010-1234-5678"></ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!signupForm.controls.phoneNumber.valid  &&  signupForm.controls.phoneNumber.touched">
       <p>010-1234-1234의 형태로 입력해주세요</p>
     </ion-item>
-    <button class="signup-button" type="submit" [disabled]="!signupForm.valid">
+    <button class="seller-signup-button" type="submit" [disabled]="!signupForm.valid">
       Create an Account
     </button>
   </form>

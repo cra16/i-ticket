@@ -1,7 +1,24 @@
-* {	
-	// font-family : 'NanumBarunGothic' !important;
+page-main, ion-content {
 	font-family: "Noto Sans", "Noto Sans CJK KR" !important;
 	color : $dominant-black ;
+	.back-button, .bar-button-ios, .bar-button-md {
+		.back-button-icon {
+			font-size: 1rem !important;
+		}
+	}
+	.back-button-icon-ios {
+		font-size: 2rem !important;
+	}
+}
+//TODO : CSS 상속개념 알아놓기
+ion-icon .back-button-icon-ios {
+
+}
+
+body {
+	// font-family : 'NanumBarunGothic' !important;
+	// font-family: "Noto Sans", "Noto Sans CJK KR" !important;
+	// color : $dominant-black ;
 	.scroll-content {
 		font-size : 12px ;
 	}
