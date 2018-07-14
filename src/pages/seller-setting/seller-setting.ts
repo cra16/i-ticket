@@ -1,15 +1,18 @@
+// Module
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular/components/action-sheet/action-sheet-controller';
 import { Camera } from '@ionic-native/camera';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
-import { UserProvider } from '../../providers/user/user';
-import { AngularFirestore } from 'angularfire2/firestore';
-import { SellerMainPage } from '../seller-main/seller-main';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
+import { AngularFirestore } from 'angularfire2/firestore';
 import firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+// Provider
+import { UserProvider } from '../../providers/user/user';
+// Page
+import { SellerMainPage } from '../seller-main/seller-main';
 
 @Component({
   selector: 'page-seller-setting',
@@ -17,7 +20,6 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 })
 
 export class SellerSettingPage {
-
   groupname: any;
   image: any;
   imgUrl: string;
@@ -28,29 +30,26 @@ export class SellerSettingPage {
   img: any;
   introduce: any;
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    public actionSheetCtrl: ActionSheetController,
-    public camera: Camera,
-    public toastCtrl: ToastController,
-    public user: UserProvider,
-    public afs: AngularFirestore,
-    public alertCtrl: AlertController,
-    private screen: ScreenOrientation) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public actionSheetCtrl: ActionSheetController, public camera: Camera,
+              public toastCtrl: ToastController, public user: UserProvider,
+              public afs: AngularFirestore, public alertCtrl: AlertController,
+              private screen: ScreenOrientation) {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
     // this.screen.lock('portrait');
 
     this.groupname = user.getGroupName();
-    this.uid = user.getUID()
+    this.uid = user.getUID();
+    // TODO: 코드 줄일 수 있을 듯 한데... by walter
     this.userRef = afs.collection('userProfile').doc(this.uid).valueChanges();
     this.userRef.subscribe(data => {
       this.userprofile = data;
       this.phoneNumber = this.userprofile['phoneNumber'];
       this.introduce = this.userprofile['sellerIntroduce'];
     })
-  }
+  } // constructor
   //사진 추가 액션씻
   public presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
@@ -97,27 +96,29 @@ export class SellerSettingPage {
   }
   //등록하면 사진, 연락처, 공연소개 부분이 유저의 정보로 업데이트됨.
   updateSellerInfo()
-  { 
+  {
     if (this.image != null){
       const storageRef: firebase.storage.Reference = firebase.storage().ref('/SellerImage/' + this.groupname);
       const uploadTask: firebase.storage.UploadTask = storageRef.putString(this.image, 'data_url');
       uploadTask.then((uploadSnapshot: firebase.storage.UploadTaskSnapshot) => {
         this.imgUrl = uploadSnapshot.downloadURL;
-        let update;
-        update = this.afs.doc(`userProfile/${this.uid}`).update({
+        this.afs.doc(`userProfile/${this.uid}`).update({
           sellerImg: this.imgUrl,
           phoneNumber: this.phoneNumber,
           sellerIntroduce: this.introduce
+        }).catch(error => {
+          console.log("@ afs.doc.update error : " + error);
         })
       }).catch(error => {
         console.log("@ uploadTask error : " + error);
       });
     }
     else if (this.image == null) {
-      let update;
-      update = this.afs.doc(`userProfile/${this.uid}`).update({
+      this.afs.doc(`userProfile/${this.uid}`).update({
         phoneNumber: this.phoneNumber,
         sellerIntroduce: this.introduce
+      }).catch(error => {
+        console.log("@ afs.doc.update error : " + error);
       })
     }
     //완료되면 알림창 표시
