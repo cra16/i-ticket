@@ -50,7 +50,8 @@ export class SellerSettingPage {
       this.introduce = this.userprofile['sellerIntroduce'];
     })
   } // constructor
-  //사진 추가 액션씻
+
+  // 사진 추가 액션씻
   public presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: '이미지를 선택해주세요',
@@ -58,7 +59,7 @@ export class SellerSettingPage {
         {
           text: '갤러리에서 가져오기',
           handler: () => {
-            this.accessGallery();
+            this.getPhotoFromGallery();
           }
         },
         {
@@ -68,8 +69,9 @@ export class SellerSettingPage {
     });
     actionSheet.present();
   }
-  //갤러리에서 사진 가져오기
-  accessGallery() {
+
+  // 갤러리에서 사진 가져오기
+  getPhotoFromGallery() {
     this.camera.getPicture({
       quality: 50,
       sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
@@ -86,17 +88,19 @@ export class SellerSettingPage {
     });
   }
   //정보메시지 표시(에러메시지 등)
+  // TODO: toast, alert 뿌리는 걸 provider로 제공하면 좋을 듯, 여기저기서 쓰이니까 by walter
   private presentToast(text) {
     let toast = this.toastCtrl.create({
       message: text,
       duration: 3000,
-      position: 'top'
+      position: 'bottom'
     });
     toast.present();
   }
   //등록하면 사진, 연락처, 공연소개 부분이 유저의 정보로 업데이트됨.
   updateSellerInfo()
   {
+    let editCompletedToastMessage = '판매자 정보가 성공적으로 수정되었습니다.';
     if (this.image != null){
       const storageRef: firebase.storage.Reference = firebase.storage().ref('/SellerImage/' + this.groupname);
       const uploadTask: firebase.storage.UploadTask = storageRef.putString(this.image, 'data_url');
@@ -107,9 +111,11 @@ export class SellerSettingPage {
           phoneNumber: this.phoneNumber,
           sellerIntroduce: this.introduce
         }).catch(error => {
+          editCompletedToastMessage = '핸드폰 번호 또는 단체 소개 내용을 수정하는 데 실패했습니다.';
           console.log("@ afs.doc.update error : " + error);
         })
       }).catch(error => {
+        editCompletedToastMessage = '사진을 저장하는 데 실패했습니다.';
         console.log("@ uploadTask error : " + error);
       });
     }
@@ -118,16 +124,20 @@ export class SellerSettingPage {
         phoneNumber: this.phoneNumber,
         sellerIntroduce: this.introduce
       }).catch(error => {
+        editCompletedToastMessage = '핸드폰 번호 또는 단체 소개 내용을 수정하는 데 실패했습니다.';
         console.log("@ afs.doc.update error : " + error);
-      })
+      });
     }
+    this.presentToast(editCompletedToastMessage);
+
     //완료되면 알림창 표시
-    let alert = this.alertCtrl.create({
-      title: '수정 완료',
-      subTitle: '판매자 정보가 성공적으로 수정되었습니다.',
-      buttons: ['OK']
-    });
-    alert.present();
-    this.navCtrl.setRoot(SellerMainPage)
+    // let alert = this.alertCtrl.create({
+    //   title: '수정 완료',
+    //   subTitle: '판매자 정보가 성공적으로 수정되었습니다.',
+    //   buttons: ['OK']
+    // });
+    // alert.present();
+    // TODO: 정보가 수정되면, 단순 토스트만 띄우고 페이지 이동안하는 게 어떤가욥 by walter
+    // this.navCtrl.setRoot(SellerMainPage)
   }
 }

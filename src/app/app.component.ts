@@ -125,7 +125,7 @@ export class MyApp {
     this.userProvider.getIsSeller() == true ? this.navCtrl.setRoot(SellerMyListPage) : this.navCtrl.setRoot(MyListPage) ;
   }
   goSettingPage() {
-    this.userProvider.getIsSeller() == true ? this.navCtrl.setRoot(SellerSettingPage) : this.navCtrl.setRoot(MyListPage) ;
+    this.userProvider.getIsSeller() == true ? this.navCtrl.push(SellerSettingPage) : this.navCtrl.setRoot(MyListPage) ;
   }
   Logout() {
     this.authProvider.logoutUser().then(() => {
