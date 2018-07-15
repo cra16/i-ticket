@@ -31,11 +31,11 @@ export class SellerSettingPage {
   introduce: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public actionSheetCtrl: ActionSheetController, public camera: Camera,
-              public toastCtrl: ToastController, public user: UserProvider,
-              public afs: AngularFirestore, public alertCtrl: AlertController,
-              private screen: ScreenOrientation) {
-    // Lock vertical screen             
+    public actionSheetCtrl: ActionSheetController, public camera: Camera,
+    public toastCtrl: ToastController, public user: UserProvider,
+    public afs: AngularFirestore, public alertCtrl: AlertController,
+    private screen: ScreenOrientation) {
+    // Lock vertical screen
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
     // this.screen.lock('portrait');
@@ -52,7 +52,7 @@ export class SellerSettingPage {
   } // constructor
 
   // 사진 추가 액션씻
-  public presentActionSheet() {
+  presentActionSheet() {
     let actionSheet = this.actionSheetCtrl.create({
       title: '이미지를 선택해주세요',
       buttons: [
@@ -92,16 +92,15 @@ export class SellerSettingPage {
   private presentToast(text) {
     let toast = this.toastCtrl.create({
       message: text,
-      duration: 3000,
+      duration: 2000,
       position: 'bottom'
     });
     toast.present();
   }
-  //등록하면 사진, 연락처, 공연소개 부분이 유저의 정보로 업데이트됨.
-  updateSellerInfo()
-  {
+  // 등록하면 사진, 연락처, 공연소개 부분이 유저의 정보로 업데이트됨.
+  updateSellerInfo() {
     let editCompletedToastMessage = '판매자 정보가 성공적으로 수정되었습니다.';
-    if (this.image != null){
+    if (this.image != null) {
       const storageRef: firebase.storage.Reference = firebase.storage().ref('/SellerImage/' + this.groupname);
       const uploadTask: firebase.storage.UploadTask = storageRef.putString(this.image, 'data_url');
       uploadTask.then((uploadSnapshot: firebase.storage.UploadTaskSnapshot) => {
