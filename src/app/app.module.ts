@@ -35,6 +35,7 @@ import { SellerSettingPage } from '../pages/seller-setting/seller-setting';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { firebaseKey } from '../key/firebaseKey';
 export const firebaseConfig = {
@@ -112,6 +113,7 @@ export const firebaseConfig = {
     AngularFireAuth,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     StarProvider,
+    AngularFireDatabase
   ]
 })
 export class AppModule {}
