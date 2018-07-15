@@ -11,6 +11,8 @@ import { EmailValidator } from '../../validators/email';
 import { AuthProvider } from '../../providers/auth/auth';
 // Page
 import { MainPage } from '../main/main';
+import { SellerResetPwdPage } from '../seller-reset-pwd/seller-reset-pwd';
+import { SellerSignupPage } from '../seller-signup/seller-signup';
 
 @IonicPage()
 @Component({
@@ -47,11 +49,11 @@ export class SellerLoginPage {
   }
 
   goToSellerSignupPage() {
-    this.navCtrl.push('SellerSignupPage');
+    this.navCtrl.push(SellerSignupPage);
   }
 
   goToSellerResetPwdPage() {
-    this.navCtrl.push('SellerResetPwdPage');
+    this.navCtrl.push(SellerResetPwdPage);
   }
 
   SellerLogin() {
