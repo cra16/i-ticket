@@ -1,101 +1,105 @@
 page-seller-setting {
-    .image-box {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        .image {
-            width: 50%;
-        }
-        .image-text {
-            text-align: center;
-        }
+  .image-box {
+    width: 100%;
+    padding: 5% 10%;
+    text-align: center;
+    // margin: 10%;
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+    // flex-direction: column;
+    // .image {
+    //   width: 50%;
+    // }
+    // .image-text {
+    //   text-align: center;
+    // }
+  }
+  .info-box {
+    width: 100%;
+    padding: 5% 10% 10% 10%;
+
+    .info-phone {
+      display: flex;
+      flex-direction: row;
+      .info-phone-label {
+        border-left: 3px solid $dominant-main;
+        padding: 0 15px;
+        font-size: 12px;
+        font-weight: 550;
+      }
+      .info-phone-input {
+        text-align: left;
+        border: 0px;
+      }
     }
-    .info-box {
-        margin: 20px 10% 0 10%;
-        padding-bottom: 10px;
-        .info-phone {
-            display: flex ;
-            flex-direction: row ;
-            .phone-label {
-                border-left: 3px solid $dominant-blue ;
-                padding-left: 15px ;
-                font-size: 18px;
-                font-weight: 550;
-            }
-            .phone-input {
-                text-align: center;
-                border: 0px;
-            }
-        }
-        .text {
-            margin-top: 30px ;
-            padding-left: 15px ;
-            width: 100% ;
-            border: 0 ;
-            border-left: 3px solid $dominant-blue ;
-        }
+    .info-intro {
+      display: flex;
+      flex-direction: row;
+      margin-top: 30px;
+      width: 100%;
+      border-left: 3px solid $dominant-main;
+      .info-intro-label {
+        padding: 0 15px;
+        text-align: left;
+        border: 0px;
+        font-weight: 550;
+      }
+      .info-intro-input {
+        width: 100%;
+        height: 20rem;
+        border: 0;
+      }
     }
-    ion-textarea {
-        padding-top: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        height: 400px;
-        .text-input {
-            height: 400px;
-        }
-        .input-cover {
-            height: 430px;
-        }
+  }
+  .button {
+    width: 100%;
+    padding: 0 10%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10%;
+    text-align: center;
+    .edit-button {
+      width: 100%;
+      height: 4rem;
+      border-radius: 5px;
+      color: $dominant-white;
+      background-color: $dominant-main;
+      font-size: 14px;
+      font-weight: bold;
     }
-    ul {
-        background-color: rgb(238, 242, 252);
-        padding-left: 0px;
-    }
-    h6 {
-        font-weight: bold;
-        text-align: center;
-    }
-    ion-input {
-        input {
-            text-align: center !important;
-        }
-    }
-    button.disable-hover.item-button.button {
-        background-color: $dominant-main;
-    }
-    .scroll-content {
-        padding: 0px !important;
-    }
-    ::-webkit-input-placeholder {
-        font-size: 14px;
-        color: #d0cdfa;
-        text-transform: uppercase;
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bold;
-    }
-    :-moz-placeholder {
-        /* older Firefox*/
-        font-size: 14px;
-        color: #d0cdfa;
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bold;
-    }
-    ::-moz-placeholder {
-        /* Firefox 19+ */
-        font-size: 14px;
-        color: #d0cdfa;
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bold;
-    }
-    :-ms-input-placeholder {
-        font-size: 14px;
-        color: #d0cdfa;
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bold;
-    }
+  }
+  button.disable-hover.item-button.button {
+    background-color: $dominant-main;
+  }
+
+
+  // placeholder
+  ::-webkit-input-placeholder {
+    font-size: 14px;
+    color: $dominant-lightgray;
+    text-align: left;
+    // text-transform: uppercase;
+  }
+  :-moz-placeholder {
+    /* older Firefox*/
+    font-size: 14px;
+    color: $dominant-lightgray;
+    text-align: left;
+    // text-transform: uppercase;
+  }
+  ::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 14px;
+    color: $dominant-lightgray;
+    text-align: left;
+    // text-transform: uppercase;
+  }
+  :-ms-input-placeholder {
+    font-size: 14px;
+    color: $dominant-lightgray;
+    text-align: left;
+    // text-transform: uppercase;
+  }
 }
