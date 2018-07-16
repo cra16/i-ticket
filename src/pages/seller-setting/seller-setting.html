@@ -9,8 +9,8 @@
 
 <ion-content padding>
   <div class="image-box" (click)="presentActionSheet()">
-    <!-- 이미지가 등록되어있지 않을 때의 디폴트 이미지가 필요하겠군요 -->
-    <!-- 이미지를 업로드하면 보여주고, 업로드전에는 이미 등록되어있는 사진을 불러온다. -->
+    <!-- TODO: 이미지가 등록되어있지 않을 때의 디폴트 이미지가 필요하겠군요 -->
+    <!-- TODO: 이미지를 업로드하면 보여주고, 업로드전에는 이미 등록되어있는 사진을 불러온다. -->
     <img class="image" [src]="image ? image : user.getSellerImg()">
     <div class="image-text">
       단체 이미지를 변경하려면 이미지를 눌러 변경해주세요.<br>
@@ -18,18 +18,19 @@
       하단의 "정보수정"을 눌러야 최종적으로 변경됩니다.
     </div>
   </div>
-  
   <div class="info-box">
     <div class="info-phone">
-      <label class="phone-label">핸드폰 번호</label>
-      <input class="phone-input" type="text" placeholder="010-1234-5678" [(ngModel)]="phoneNumber">
+      <label class="info-phone-label">phone</label>
+      <!-- TODO: 하이픈이 자동으로 입력되거나 양식을 정해주는 게 좋을 듯 by walter -->
+      <input class="info-phone-input" type="text" placeholder="010-1234-5678" [(ngModel)]="phoneNumber">
     </div>
-    <textarea class="text" type="text" placeholder="단체 소개 내용을 입력해주세요 (1100자 이내)" [(ngModel)]="introduce"></textarea>
+    <div class="info-intro">
+      <label class="info-intro-label">intro</label>
+      <textarea class="info-intro-input" type="text" placeholder="단체 소개 내용을 입력해주세요 (1100자 이내)" [(ngModel)]="introduce"></textarea>
+    </div>
   </div>
-
-  <ion-grid>
-    <ion-row justify-content-center>
-      <button color="dom" ion-button full (click)="updateSellerInfo()"> 정보수정 </button>
-    </ion-row>
-  </ion-grid>
+  <!-- TODO:단체 소개 내용에 아무것도 입력하지 않고 정보수정을 누르면 에러뜸 by walter -->
+  <div class="button">
+    <button class="edit-button"(click)="updateSellerInfo()">정보수정</button>
+  </div>
 </ion-content>
