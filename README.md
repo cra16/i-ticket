@@ -13,6 +13,7 @@ I-TICKET은 대학생 누구나 공연 정보를 등록하고, 공연 티켓을 
 
 ## History
 Jan  4, 2018 : start project: i-ticket
+
 July 8, 2018 : change private to public
 
 ## License
