@@ -30,7 +30,7 @@ import { SellerMainPage } from '../pages/seller-main/seller-main';
 import { StarReviewComponent } from '../components/star-review/star-review';
 import { SellerMyListPage } from '../pages/seller-my-list/seller-my-list';
 import { SellerSettingPage } from '../pages/seller-setting/seller-setting';
-
+import { SellerSignupPage } from '../pages/seller-signup/seller-signup';
 // Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -56,16 +56,17 @@ export const firebaseConfig = {
     MyListPage,
     ListPage,
     LoginPage,
+    TicketInfoPage,
     SellerLoginPage,
     SellerRegisterPage,
     SellerEditPage,
-    TicketInfoPage,
     SellerTicketManagePage,
     SellerMainPage,
     SellerResetPwdPage,
-    StarReviewComponent,
+    SellerSignupPage,
     SellerSettingPage,
-    SellerMyListPage
+    SellerMyListPage,
+    StarReviewComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,15 +92,17 @@ export const firebaseConfig = {
     MyListPage,
     ListPage,
     LoginPage,
+    TicketInfoPage,
     SellerLoginPage,
     SellerRegisterPage,
-    TicketInfoPage,
     SellerEditPage,
     SellerTicketManagePage,
     SellerMainPage,
-    StarReviewComponent,
     SellerSettingPage,
-    SellerMyListPage
+    SellerMyListPage,
+    SellerResetPwdPage,
+    SellerSignupPage,
+    StarReviewComponent,
   ],
   providers: [
     StatusBar,
