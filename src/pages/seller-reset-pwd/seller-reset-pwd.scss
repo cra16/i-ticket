@@ -1,23 +1,47 @@
 page-seller-reset-pwd {
-  .logo {
-    margin : auto ;
-    padding : 55px 0px 50px 0px ;
-    width : 166px ;
+  .direction {
+    padding: 5%;
+    .first {
+      display: flex;
+      align-items:center;
+      padding-bottom: 2%;
+      ion-icon.icon {
+        color: $dominant-main;
+        width: 20px;
+        height: 20px;
+      }
+      span {
+        color: $dominant-main;
+        font-size: 3rem;
+      }
+    }
+    .second {
+      display: flex;
+      align-items:center;
+    }
   }
-  .form-icon {
-    width : 16px ;
-    height : 16px ;
-  }
-  .reset-button {
-    margin-top : 100px ;
-    padding : 0 ;
-		width : 315px ;
-		height : 48px ;
-		font-size : 12px ;
-		color : white ;
-		background-color : $dominant-main ;
-		border-radius : 5px ;
-		box-shadow : 0px 5px 10px rgba(0, 0, 0, 0.2) ;
+
+  .find-form {
+    padding: 0 5%;
+    // text-align: center ;
+    width: 100%;
+    .form-icon {
+      width : 16px ;
+      height : 16px ;
+    }
+    .no-padding {
+      padding: 0;
+    }
+    .reset-button {
+      margin-top : 50px;
+      width : 100%;
+      height : 4rem;
+      font-size : 12px ;
+      color : white ;
+      background-color : $dominant-main ;
+      border-radius : 5px ;
+      // box-shadow : 0px 5px 10px rgba(0, 0, 0, 0.2) ;
+    }
   }
   .error-message {
       min-height: 2.2rem;
@@ -31,8 +55,4 @@ page-seller-reset-pwd {
       border-bottom: 0 !important;
       }
   }
-  .find-form {
-    text-align: center ;
-  }
 }
-  
