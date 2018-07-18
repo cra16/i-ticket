@@ -5,25 +5,32 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="logo">
-    <img src="assets/icon/icon-i-ticket-horizontal.svg">
+  <!-- TODO: 프론트 수정해야함... by walter -->
+  <div class="direction">
+    <div class="first">
+      <!-- <img src="assets/icon/icon-find-pwd.svg"> -->
+      <ion-icon class="icon" name="ios-chatbubbles-outline"></ion-icon>
+      <span>비밀번호 찾기</span>
+    </div>
+    <div class="second">
+      회원가입하셨던 이메일을 적어주시면,<br>
+      비밀번호를 재설정하실 수 있도록<br>
+      도와드리겠습니다 :)
+    </div>
   </div>
-
   <form class="find-form" [formGroup]="resetPasswordForm" (submit)="resetPassword()" novalidate>
-    <ion-item>
+    <ion-item class="no-padding">
       <ion-label><img class="form-icon" src="assets/icon/icon-user.svg"></ion-label>
       <ion-input formControlName="email" type="email" placeholder="Your email address"
-                [class.invalid]="!resetPasswordForm.controls.email.valid && 
+                [class.invalid]="!resetPasswordForm.controls.email.valid &&
                 resetPasswordForm.controls.email.dirty">
       </ion-input>
     </ion-item>
     <ion-item class="error-message" *ngIf="!resetPasswordForm.controls.email.valid && resetPasswordForm.controls.email.dirty"> 
-      <p>Please enter a valid email.</p>
+      <p>유효한 메일을 입력해주세요.</p>
     </ion-item>
-
     <button class="reset-button" type="submit" [disabled]="!resetPasswordForm.valid">
       Reset your Password
     </button>
-
   </form>
 </ion-content>

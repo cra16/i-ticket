@@ -1,10 +1,13 @@
+// Module
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Alert, AlertController, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, Alert, AlertController, MenuController } from 'ionic-angular';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AuthProvider } from '../../providers/auth/auth';
-import { EmailValidator } from '../../validators/email';
 import { Platform } from 'ionic-angular/platform/platform';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+// Provider
+import { AuthProvider } from '../../providers/auth/auth';
+// Validator
+import { EmailValidator } from '../../validators/email';
 
 @IonicPage()
 @Component({
@@ -14,24 +17,21 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 export class SellerResetPwdPage {
   public resetPasswordForm: FormGroup;
 
-  constructor(public navCtrl: NavController,
-              public authProvider: AuthProvider,
-              public alertCtrl: AlertController,
-              formBuilder: FormBuilder,
-              public menu: MenuController,
-              public platform: Platform,
-              private screen: ScreenOrientation) {
+  constructor(public navCtrl: NavController, public authProvider: AuthProvider,
+    public alertCtrl: AlertController, public formBuilder: FormBuilder,
+    public menu: MenuController, public platform: Platform,
+    private screen: ScreenOrientation) {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
     // this.screen.lock('portrait');
-    this.menu=menu;
+    this.menu = menu;
     //백버튼눌렀을시 전페이지로
     let backAction = platform.registerBackButtonAction(() => {
       this.navCtrl.pop();
       backAction();
     }, 2)
-    
+
     // this.menu.enable(false,'myMenu')
     // 위의 문장을 주석 처리하면 Sidemenu가 사용 가능해짐
     this.resetPasswordForm = formBuilder.group({
@@ -58,13 +58,17 @@ export class SellerResetPwdPage {
       }).catch(error => {
         console.log("@ authProvider.resetPassword error : " + error);
         const errorAlert = this.alertCtrl.create({
-          message: error.message,
-          buttons: [{ text: "Ok", role: "cancel" }]
+          // message: error.message,
+          // TODO: 더 깔끔한? 워딩이 필요할 듯 by walter
+          message: "가입되지 않은 이메일입니다. 다시 확인해주세요.",
+          buttons: [{
+            text: "Ok",
+            role: "cancel"
+          }]
         });
         errorAlert.present();
       });
     }
   }
-
 }
 
