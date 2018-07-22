@@ -58,8 +58,6 @@ export class SellerResetPwdPage {
       }).catch(error => {
         console.log("@ authProvider.resetPassword error : " + error);
         const errorAlert = this.alertCtrl.create({
-          // message: error.message,
-          // TODO: 더 깔끔한? 워딩이 필요할 듯 by walter
           message: "존재하지 않는 이메일입니다.<br/>다시 확인하고 시도해주세요."
           ,
           buttons: [{
