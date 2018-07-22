@@ -168,6 +168,7 @@ export class SellerRegisterPage {
   }
   //판매등록 시 파이어베이스로 데이터 넘김
   updateConcert() {
+    //TODO: 아무 내용없이 글을 작성할 경우에 오류 발생
     let url;
     let seatRef;
     let sellerRef;
