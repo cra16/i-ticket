@@ -1,9 +1,8 @@
-import { FormControl } from '@angular/forms'; 
-
 //validation example
 //010-xxxx-xxxx
-//(011|011|016|017|018|019)-xxxx-xxx
-//(011|011|016|017|018|019)-xxx-xxx
+//(011|016|017|018|019)-xxxx-xxxx
+//(011|016|017|018|019)-xxx-xxxx
+import { FormControl } from '@angular/forms'; 
 
 export class PhoneValidator {
     static isValid(control: FormControl){
