@@ -44,7 +44,8 @@ export class AuthProvider {
           email: email,
           phoneNumber: phoneNumber,
           uid: newUser.uid,
-          isSeller: true
+          isSeller: true,
+          photoURL: "null",
         })
         return true;
       }).catch(error => {

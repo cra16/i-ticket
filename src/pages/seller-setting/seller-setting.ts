@@ -48,6 +48,8 @@ export class SellerSettingPage {
       this.userprofile = data;
       this.phoneNumber = this.userprofile['phoneNumber'];
       this.introduce = this.userprofile['sellerIntroduce'];
+      // check if user set profile image
+      this.userprofile['photoURL'] == "null" ? this.image = "../../assets/imgs/defaultImage.jpg" : console.log("이미 프사를 등록했군용")
     })
   } // constructor
 

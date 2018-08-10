@@ -9,8 +9,6 @@
 
 <ion-content padding>
   <div class="image-box" (click)="presentActionSheet()">
-    <!-- TODO: 이미지가 등록되어있지 않을 때의 디폴트 이미지가 필요하겠군요 -->
-    <!-- TODO: 이미지를 업로드하면 보여주고, 업로드전에는 이미 등록되어있는 사진을 불러온다. -->
     <img class="image" [src]="image ? image : user.getSellerImg()">
     <div class="image-text">
       단체 이미지를 변경하려면 이미지를 눌러 변경해주세요.<br>
@@ -31,6 +29,6 @@
   </div>
   <!-- TODO:단체 소개 내용에 아무것도 입력하지 않고 정보수정을 누르면 에러뜸 by walter -->
   <div class="button">
-    <button class="edit-button"(click)="updateSellerInfo()">정보수정</button>
+    <button class="edit-button"(click)="updateSellerInfo()" [disabled]="isChanged">정보수정</button>
   </div>
 </ion-content>
