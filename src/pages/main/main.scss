@@ -1,6 +1,6 @@
 page-main {
 	.scroll-content {
-		overflow-y: hidden;
+		// overflow-y: hidden;
 	}
 	ion-segment{
 	  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
@@ -15,7 +15,6 @@ page-main {
 			background-color: #F5F6F7;
 			height: 40px;
 			padding: 0px 5px;
-
 			.noLine   {
 				border: 0;
 				color: $dominant-gray ;
