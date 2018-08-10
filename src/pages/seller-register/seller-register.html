@@ -30,7 +30,7 @@
         <ion-row>
           <ion-item>
             <ion-label stacked style="text-align:center;">
-              공연일시
+              공연일시<br>(날짜정보는 수정할 수 없습니다)
             </ion-label>
           </ion-item>
           <ion-item >
@@ -52,7 +52,7 @@
           <ion-item [hidden]=add4 >
             <ion-datetime displayFormat="YYYY - MM - DD (DDD) HH:mm " min="2018" max="2019" placeholder="2018-01-01 (Mon) 18:00" [(ngModel)]="date[4]">
             </ion-datetime>
-          </ion-item>
+          </ion-item> 
         </ion-row>
         <!--공연 횟수에 따라 날짜추가 -->
         <ion-item style="text-align:center;">
