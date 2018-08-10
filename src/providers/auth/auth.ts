@@ -23,14 +23,15 @@ export class AuthProvider {
     public alertCtrl: AlertController,
     public afAuth: AngularFireAuth,
     private googlePlus: GooglePlus) {
-    this.user = this.afAuth.authState
-      .switchMap(user => {
-        if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
-        } else {
-          return Observable.of(null)
+      this.user = this.afAuth.authState
+        .switchMap(user => {
+          if (user) {
+            return this.afs.doc<User>(`users/${user.uid}`).valueChanges()
+          } else {
+            return Observable.of(null)
+          }
         }
-      })
+      );
   }
   loginUser(email: string, password: string): Promise<any> {
     return firebase.auth().signInWithEmailAndPassword(email, password);
