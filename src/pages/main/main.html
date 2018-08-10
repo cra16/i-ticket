@@ -30,7 +30,7 @@
 							<span class="date">{{slide.date[0] | date:'yy.MM.dd (EEE)'}}</span>
 						</ion-col>
 						<ion-col class="button">
-							<button class="btn-goBooking" (click)="goBookingPage(slide)">구매하러가기</button>
+							<button class="btn-goBooking" [disabled]="userProvider.getIsSeller()==true" (click)="goBookingPage(slide)">구매하러가기</button>
 						</ion-col>
 					</ion-row>
 				</ion-grid>
