@@ -148,7 +148,6 @@ export class SellerRegisterPage {
   }
   //날짜삭제기능 핸들링 (리팩토링 필요)
   deleteDatetime() {
-    this.click = this.click + 1;
     if (this.count == 1 || this.add2 == 1) {
       this.date[1] = null;
       this.add1 = 1;
@@ -165,6 +164,7 @@ export class SellerRegisterPage {
       this.date[4] = null;
       this.add4 = 1;
     }
+    this.count--;
   }
   //판매등록 시 파이어베이스로 데이터 넘김
   updateConcert() {
