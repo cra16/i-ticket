@@ -62,7 +62,7 @@ export class ListPage {
         this.getYear(this.year);
       }
     });
-    this.groupnames = this.afs.collection('userProfile', ref => ref.orderBy('name')).valueChanges();
+    this.groupnames = this.afs.collection('userProfile', ref => ref.where("isSeller","==",true).orderBy('name')).valueChanges();
     console.log(this.list_time);
     console.log("이니셜 끝");
   }
