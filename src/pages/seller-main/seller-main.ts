@@ -20,14 +20,14 @@ export class SellerMainPage {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
-    //this.screen.lock('portrait');
+    this.screen.lock('portrait');
     this.initialize();
   }
 
   initialize() {
     this.username = this.user.getGroupName();
     this.afs.collection('userProfile').doc(this.user.obj['uid'])
-            .collection('concerts').valueChanges().subscribe(data => {
+            .collection('concerts',ref => ref.where('status','==','판매 중')).valueChanges().subscribe(data => {
               this.concert_list = data ;
             }) ;
   }

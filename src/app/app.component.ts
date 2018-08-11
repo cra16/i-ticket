@@ -25,6 +25,7 @@ import { SellerSettingPage } from '../pages/seller-setting/seller-setting';
 import { SellerMyListPage } from '../pages/seller-my-list/seller-my-list' ;
 
 import { firebaseKey } from '../key/firebaseKey';
+import { SettingPage } from '../pages/setting/setting';
 firebase.initializeApp({
   apiKey: firebaseKey['apiKey'],
   authDomain: firebaseKey['authDomain'],
@@ -122,7 +123,7 @@ export class MyApp {
     this.userProvider.getIsSeller() == true ? this.navCtrl.setRoot(SellerMyListPage) : this.navCtrl.setRoot(MyListPage) ;
   }
   goSettingPage() {
-    this.userProvider.getIsSeller() == true ? this.navCtrl.push(SellerSettingPage) : this.navCtrl.setRoot(MyListPage) ;
+    this.userProvider.getIsSeller() == true ? this.navCtrl.push(SellerSettingPage) : this.navCtrl.push(SettingPage) ;
   }
   Logout() {
     this.authProvider.logoutUser().then(() => {

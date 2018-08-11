@@ -28,6 +28,7 @@ import { StarReviewComponent } from '../components/star-review/star-review';
 import { SellerMyListPage } from '../pages/seller-my-list/seller-my-list';
 import { SellerSettingPage } from '../pages/seller-setting/seller-setting';
 import { SellerSignupPage } from '../pages/seller-signup/seller-signup';
+import { SettingPage } from '../pages/setting/setting';
 // Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -35,6 +36,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { firebaseKey } from '../key/firebaseKey';
+import { PolicyPage } from '../pages/policy/policy';
 export const firebaseConfig = {
       apiKey: firebaseKey['apiKey'],
       authDomain: firebaseKey['authDomain'],
@@ -52,6 +54,8 @@ export const firebaseConfig = {
     MyListPage,    
     ListPage,
     LoginPage,
+    PolicyPage,
+    SettingPage,
     SellerLoginPage,
     SellerRegisterPage,
     SellerEditPage,
@@ -87,6 +91,8 @@ export const firebaseConfig = {
     MyListPage,
     ListPage,
     LoginPage,
+    PolicyPage,
+    SettingPage,
     SellerLoginPage,
     SellerRegisterPage,
     SellerEditPage,
