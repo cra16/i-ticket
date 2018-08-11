@@ -60,7 +60,7 @@ export class SellerRegisterPage {
     // 마지막에 주석해제 하면 됨.
     //this.screen.lock('portrait');
 
-    this.initialize_seat();
+    // this.initialize_seat();
     //장르와 장소 공연상태 목록 
     this.genres = [
       { genre: '연극', value: '연극' },
@@ -233,21 +233,21 @@ export class SellerRegisterPage {
           groupname: groupname
         })
         //날짜데이터에 시트데이터 업데이트
-        for (let i = 0; i < this.count + 1; i++) {
-          docRef.collection("date").doc(i.toString()).set({
-            date: date_list[i]
-          }).then(() => {
-            for (let j = 0; j < this.col.length * this.row.length; j++) {
-              seatRef = this.afs.doc(`concerts/${docRef.id}/date/${i}/seat/${this.select_seats[j].info}`);
-              seatRef.set({
-                info: this.select_seats[j].info,
-                status: this.select_seats[j].status
-              })
-            }
-          }).catch(error => {
-            console.log("@ docRef.collection().doc().set error : " + error);
-          });
-        }
+        // for (let i = 0; i < this.count + 1; i++) {
+        //   docRef.collection("date").doc(i.toString()).set({
+        //     date: date_list[i]
+        //   }).then(() => {
+        //     for (let j = 0; j < this.col.length * this.row.length; j++) {
+        //       seatRef = this.afs.doc(`concerts/${docRef.id}/date/${i}/seat/${this.select_seats[j].info}`);
+        //       seatRef.set({
+        //         info: this.select_seats[j].info,
+        //         status: this.select_seats[j].status
+        //       })
+        //     }
+        //   }).catch(error => {
+        //     console.log("@ docRef.collection().doc().set error : " + error);
+        //   });
+        //}
       }).catch(error => {
         console.log("@ url add error : " + error);
       });
@@ -265,29 +265,29 @@ export class SellerRegisterPage {
   }
 
   //좌석 갯수에 맞게끔 좌석값 초기화 함수
-  initialize_seat() {
-    let seats = new Array(this.col.length * this.row.length);
-    for (let i = 0; i < this.row.length; i++) {
-      for (let j = 0; j < this.col.length; j++) {
-        let seat_info = {
-          status: this.ticket.NOT,
-          info: ""
-        };
-        //TODO: 예약석 체크 알고리즘 만들어야 할듯
-        if (i < 2)
-          seat_info.status = this.ticket.VIP;
-        // 없는 좌석
-        if (i == this.row.length - 1) {
-          if (j <= 2 || j >= 9)
-            seat_info.status = this.ticket.EMPTY;
-        }
-        seat_info.info = String.fromCharCode(i + 65) + this.n(j + 1);
-        seats[12 * i + j] = seat_info;
-      }
-    }
-    this.select_seats = seats;
-  }
-  n(n) {
-    return n > 9 ? "" + n : "0" + n;
-  }
+  // initialize_seat() {
+  //   let seats = new Array(this.col.length * this.row.length);
+  //   for (let i = 0; i < this.row.length; i++) {
+  //     for (let j = 0; j < this.col.length; j++) {
+  //       let seat_info = {
+  //         status: this.ticket.NOT,
+  //         info: ""
+  //       };
+  //       //TODO: 예약석 체크 알고리즘 만들어야 할듯
+  //       if (i < 2)
+  //         seat_info.status = this.ticket.VIP;
+  //       // 없는 좌석
+  //       if (i == this.row.length - 1) {
+  //         if (j <= 2 || j >= 9)
+  //           seat_info.status = this.ticket.EMPTY;
+  //       }
+  //       seat_info.info = String.fromCharCode(i + 65) + this.n(j + 1);
+  //       seats[12 * i + j] = seat_info;
+  //     }
+  //   }
+  //   this.select_seats = seats;
+  // }
+  // n(n) {
+  //   return n > 9 ? "" + n : "0" + n;
+  // }
 }
