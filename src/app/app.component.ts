@@ -89,6 +89,7 @@ export class MyApp {
   }
 
   initializeApp() {
+    this.userProvider.getIsSeller()
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();

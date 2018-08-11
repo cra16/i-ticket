@@ -4,17 +4,20 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import firebase from 'firebase';
 import { TicketProvider } from '../../providers/ticket/ticket';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import { timeout } from '../../../node_modules/rxjs/operators';
 
 @Component({
   selector: 'page-my-list',
   templateUrl: 'my-list.html',
 })
 export class MyListPage {
-  notyet_num: number;
+  reviewed_num: number;
   done_num: number;
   concert_list: Array<any>;
+  concert_info: Array<any> =[];
+  info : Array<any>;
   closed_list: Array<any>;
-  times: Array<Date> = [];
+  concerts: Array<any> = [];
   endTimes: Array<Date>=[];
 
   constructor(public navCtrl: NavController,
@@ -30,30 +33,25 @@ export class MyListPage {
   }
 
   initializeList() {
-    this.afs.collection('userProfile').doc(firebase.auth().currentUser['uid'])
-      .collection('ticket', ref => ref.where('status', '>=', this.ticket.BEFORE_PAYMENT).where('status', '<=', this.ticket.DONE).orderBy('status', 'desc'))
-      .valueChanges().subscribe((data) => {
+    
+    this.afs.collection('stars', ref => ref.where('uid','==',firebase.auth().currentUser['uid'])).valueChanges().subscribe((data) => {
         this.concert_list = data;
-        this.notyet_num = data.length; // 관람 예정 공연의 수
-
-        for(let num=0; num<this.concert_list.length ; num++) {
-          let test = new Date(this.concert_list[num]['date'].getTime() + Number(this.concert_list[num].concert_obj['runningTime']) * 60000);
-          this.times.push(test)
+        this.reviewed_num = data.length; // 리뷰남긴 공연의 수
+        //공연 id 추출
+        for(let num=0; num<data.length ; num++) { 
+          let test = this.concert_list[num]['concertId'];
+          this.concerts.push(test)
         } 
-      });
-
+        //추출한 공연 id를 바탕으로 공연정보뽑아오기
    
-
-    this.afs.collection('userProfile').doc(firebase.auth().currentUser['uid'])
-      .collection('ticket', ref => ref.where('status', '==', this.ticket.CLOSED))
-      .valueChanges().subscribe((data) => {
-        this.closed_list = data;
-        this.done_num = data.length; // 관람한 공연의 수
-        for(let num=0; num<this.closed_list.length ; num++) {
-          let test = new Date(this.closed_list[num]['date'].getTime() + Number(this.closed_list[num].concert_obj['runningTime']) * 60000);
-          this.endTimes.push(test)
-        } 
-      });
+        for(let num = 0; num < this.concerts.length; num++){
+          
+          this.afs.collection('concerts', ref => ref.where('id','==',this.concerts[num])).valueChanges().subscribe((data) =>
+            {
+              this.concert_info[num]=data;
+            })
+        }
+        
+      });   
   }
-
 }

@@ -41,7 +41,8 @@ export const firebaseConfig = {
       databaseURL: firebaseKey['databaseURL'],
       projectId: firebaseKey['projectId'],
       storageBucket: firebaseKey['storageBucket'],
-      messagingSenderId: firebaseKey['messagingSenderId']
+      messagingSenderId: firebaseKey['messagingSenderId'],
+      userProvider: UserProvider
 };
 
 @NgModule({

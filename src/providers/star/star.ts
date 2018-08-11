@@ -6,7 +6,7 @@ import firebase from 'firebase';
 
 export interface Star {
   uid: any;
-  consertId: any;
+  concertId: any;
   value: number;
 }
 
@@ -21,16 +21,16 @@ export class StarProvider {
     return starsRef.valueChanges();
   }
 
-  getConcertStars(consertId) {
-    const starsRef = this.afs.collection('stars', ref => ref.where('consertId', '==', consertId))
+  getConcertStars(concertId) {
+    const starsRef = this.afs.collection('stars', ref => ref.where('concertId', '==', concertId))
     return starsRef.valueChanges();
   }
   //별점 생성 및 업데이트
-  setStar(uid, consertId, value) {
+  setStar(uid, concertId, value) {
     //별점 document 데이터
-    const star: Star = { uid, consertId, value };
+    const star: Star = { uid, concertId, value};
 
-    const starPath = `stars/${star.uid}_${star.consertId}`;
+    const starPath = `stars/${star.uid}_${star.concertId}`;
 
     return this.afs.doc(starPath).set(star)
 
