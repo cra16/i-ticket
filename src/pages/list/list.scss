@@ -1,4 +1,40 @@
 page-list {
+  .card-card {
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+    height: 300px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    .card-shadow {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4)
+    }
+    .card-info {
+      position: absolute;
+      top: 36%;
+      width: 100%;
+    }
+    .card-title {
+      // position: absolute;
+      // top: 36%;
+      font-size: 2.0em;
+      width: 100%;
+      font-weight: bold;
+      color: #F5F6F7;
+    }
+    .card-subtitle {
+      font-size: 1.0em;
+      // position: absolute;
+      // top: 52%;
+      width: 100%;
+      color: #F5F6F7;
+    }
+  }
 	ion-segment{
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
 
@@ -23,14 +59,20 @@ page-list {
 
   .month {
 		.month-title {
-			padding: 20px 15px 0px 15px;
-			margin-top: 10px;
+			// padding: 20px 15px 0px 15px;
+			// margin-top: 10px;
 
 			.line-cutter {
-				padding-bottom: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        // padding-bottom: 5px;
+        height: 50px;
 				font-size: 15px;
-				color: $dominant-black;
-				border-bottom: 2px solid rgba($dominant-gray, 0.3);
+        color: $dominant-black;
+        background-color: $dominant-white;
+				border-bottom: 1px solid rgba($dominant-gray, 0.3);
 			}
 		}
 

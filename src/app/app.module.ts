@@ -76,6 +76,8 @@ export const firebaseConfig = {
       backButtonIcon: 'md-arrow-back',
       backButtonText: '',
       iconMode: 'md',
+      scrollAssist: false, 
+      autoFocusAssist: false,
       // modalEnter: 'modal-slide-in',
       // modalLeave: 'modal-slide-out',
       // tabbarPlacement: 'bottom',

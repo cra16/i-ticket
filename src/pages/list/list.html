@@ -6,7 +6,7 @@
     </button>
   </ion-navbar>
   <ion-segment class="top-segment" [(ngModel)]="category">
-		<ion-segment-button class="noLine" value="time">시간별</ion-segment-button>
+		<ion-segment-button class="noLine" value="time">시간순</ion-segment-button>
 		<ion-segment-button class="noLine" value="group">
       단체별
       <ion-select [(ngModel)]="groupname" interface="popover">
@@ -27,26 +27,19 @@
       <div *ngFor="let mon of monthForView; let i=index" class="month">
         <div *ngIf="mon > 0"  class="month-title">
           <div class="line-cutter">
-            <span>{{year}}년 {{mon}}월</span>
+            <!-- <div> {{year}}년 {{mon}}월 </div> -->
+            <div> {{mon}}월 </div>
           </div>
         </div>
-        <div *ngFor="let list of list_time" class="performences">
-          <div *ngIf="mon==(list['date'][0] | date:'MM')" (click)="goDetailPage(list)" class="performence">
-            <div class="thumbnail">
-              <img src="{{list.img}}">
+        <div *ngFor="let list of list_time">
+          <ion-card class="card-card" *ngIf="mon==(list['date'][0] | date:'MM')" (click)="goDetailPage(list)">
+            <img src="{{list.img}}">
+            <div class="card-shadow"></div>
+            <div class="card-info">
+              <div class="card-title">{{list.title}}</div>
+              <div class="card-subtitle">{{list['date'][0] | date:'yyyy-MM-dd'}}</div>
             </div>
-            <div class="per-info">
-              <div>
-                <button *ngIf="list.status=='판매 중'" ion-button outline class="selling"> 판매중 </button>
-                <button *ngIf="list.status=='판매 예정'" ion-button outline class="will">판매 예정</button>
-                <button *ngIf="list.status=='종료된 공연'" ion-button outline class="sold-out">종료된 공연</button>
-                <button [hidden]="list.price!='0'" ion-button outline class="free">무료 공연</button>
-              </div>
-              <span class="title">{{list.title}}</span>
-              <span class="date">{{list['date'][0] | date:'yyyy-MM-dd hh:mm'}}</span>
-              <span class="space">{{list.location}}</span>
-            </div>
-          </div>
+          </ion-card>
         </div>
       </div>
 
