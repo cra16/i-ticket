@@ -27,7 +27,7 @@ export class SellerMainPage {
   initialize() {
     this.username = this.user.getGroupName();
     this.afs.collection('userProfile').doc(this.user.obj['uid'])
-            .collection('concerts').valueChanges().subscribe(data => {
+            .collection('concerts',ref => ref.where('status','==','판매 중')).valueChanges().subscribe(data => {
               this.concert_list = data ;
             }) ;
   }

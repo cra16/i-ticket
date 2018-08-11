@@ -25,8 +25,9 @@
 				</ion-grid>
 			</ion-slide>
     </ion-slides>
-    <button (click)="addItem()">
-      공연추가
-    </button>
+    <ion-fab center bottom class="buttons">
+      <button class="plus" ion-fab (click)="addItem()">+
+      </button>
+    </ion-fab>
   </div>
 </ion-content>
