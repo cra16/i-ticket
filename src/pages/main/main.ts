@@ -29,7 +29,7 @@ export class MainPage {
 		// Lock vertical screen             
 		// 네이티브에서만 적용되는 기능,
 		// 마지막에 주석해제 하면 됨.
-		//this.screen.lock('portraitv');
+		this.screen.lock('portraitv');
 
 		this.initializeApp();
 		this.initializeItems();

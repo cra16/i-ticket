@@ -1,11 +1,40 @@
 <ion-header>
   <ion-navbar>
-    <span class="title">판매자 공연 목록</span>
+    <span class="title">내가 등록한 공연 정보</span>
     <button class="top-button" menuToggle end>
       <img src="assets/icon/icon-ticket.svg">
     </button>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+  <div class="content" [ngSwitch]="category">
+    <ion-list id="time" *ngSwitchCase="'time'">
+      <div *ngFor="let mon of monthForView; let i=index" class="month">
+        <div *ngIf="mon > 0"  class="month-title">
+          <div class="line-cutter">
+            <span>{{year}}년 {{mon}}월</span>
+          </div>
+        </div>
+        <div *ngFor="let list of list_time" class="performences">
+          <div *ngIf="mon==(list['date'][0] | date:'MM')" (click)="goDetailPage(list)" class="performence">
+            <div class="thumbnail">
+              <img src="{{list.img}}">
+            </div>
+            <div class="per-info">
+              <div>
+                <button *ngIf="list.status=='판매 중'" ion-button outline class="selling"> 판매중 </button>
+                <button *ngIf="list.status=='판매 예정'" ion-button outline class="will">판매 예정</button>
+                <button *ngIf="list.status=='종료된 공연'" ion-button outline class="sold-out">종료된 공연</button>
+                <button [hidden]="list.price!='0'" ion-button outline class="free">무료 공연</button>
+              </div>
+              <span class="title">{{list.title}}</span>
+              <span class="date">{{list['date'][0] | date:'yyyy-MM-dd hh:mm'}}</span>
+              <span class="space">{{list.location}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-list>
+  </div>
 </ion-content>
