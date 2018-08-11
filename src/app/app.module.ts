@@ -18,14 +18,11 @@ import { MyListPage } from '../pages/my-list/my-list';
 import { ListPage } from '../pages/list/list';
 import { LoginPage } from '../pages/login/login';
 import { DetailPage } from '../pages/detail/detail';
-import { BookingPage } from '../pages/booking/booking';
 import { MainPage } from '../pages/main/main';
 import { SellerLoginPage } from '../pages/seller-login/seller-login';
 import { SellerRegisterPage } from '../pages/seller-register/seller-register';
 import { SellerResetPwdPage } from '../pages/seller-reset-pwd/seller-reset-pwd';
 import { SellerEditPage } from '../pages/seller-edit/seller-edit';
-import { TicketInfoPage } from '../pages/ticket-info/ticket-info';
-import { SellerTicketManagePage } from '../pages/seller-ticket-manage/seller-ticket-manage';
 import { SellerMainPage } from '../pages/seller-main/seller-main';
 import { StarReviewComponent } from '../components/star-review/star-review';
 import { SellerMyListPage } from '../pages/seller-my-list/seller-my-list';
@@ -51,16 +48,13 @@ export const firebaseConfig = {
   declarations: [
     MyApp,
     DetailPage,
-    BookingPage,
     MainPage,
-    MyListPage,
+    MyListPage,    
     ListPage,
     LoginPage,
-    TicketInfoPage,
     SellerLoginPage,
     SellerRegisterPage,
     SellerEditPage,
-    SellerTicketManagePage,
     SellerMainPage,
     SellerResetPwdPage,
     SellerSignupPage,
@@ -89,16 +83,13 @@ export const firebaseConfig = {
   entryComponents: [
     MyApp,
     DetailPage,
-    BookingPage,
     MainPage,
     MyListPage,
     ListPage,
     LoginPage,
-    TicketInfoPage,
     SellerLoginPage,
     SellerRegisterPage,
     SellerEditPage,
-    SellerTicketManagePage,
     SellerMainPage,
     SellerSettingPage,
     SellerMyListPage,

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ListPage } from '../list/list';
 import { DetailPage } from '../detail/detail';
-import { BookingPage } from '../booking/booking';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { UserProvider } from '../../providers/user/user';
@@ -30,7 +29,7 @@ export class MainPage {
 		// Lock vertical screen             
 		// 네이티브에서만 적용되는 기능,
 		// 마지막에 주석해제 하면 됨.
-		// this.screen.lock('portraitv');
+		this.screen.lock('portraitv');
 
 		this.initializeApp();
 		this.initializeItems();
@@ -62,8 +61,5 @@ export class MainPage {
 	goDetailPage(slide) {
 		// 공연의 키값을 파라미터로 받아온다.
 		this.navCtrl.push(DetailPage, { concert_obj: slide })
-	}
-	goBookingPage(slide) {
-		this.navCtrl.push(BookingPage, { concert_obj: slide })
 	}
 }

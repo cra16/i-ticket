@@ -11,8 +11,6 @@ import { Observable } from 'rxjs/Observable';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 // Provider
 import { UserProvider } from '../../providers/user/user';
-// Page
-import { SellerMainPage } from '../seller-main/seller-main';
 
 @Component({
   selector: 'page-seller-setting',
@@ -131,14 +129,5 @@ export class SellerSettingPage {
     }
     this.presentToast(editCompletedToastMessage);
 
-    //완료되면 알림창 표시
-    // let alert = this.alertCtrl.create({
-    //   title: '수정 완료',
-    //   subTitle: '판매자 정보가 성공적으로 수정되었습니다.',
-    //   buttons: ['OK']
-    // });
-    // alert.present();
-    // TODO: 정보가 수정되면, 단순 토스트만 띄우고 페이지 이동안하는 게 어떤가욥 by walter
-    // this.navCtrl.setRoot(SellerMainPage)
   }
 }

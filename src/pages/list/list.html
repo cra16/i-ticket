@@ -42,20 +42,6 @@
           </ion-card>
         </div>
       </div>
-
-      <!-- <div *ngFor="let mon of monthForView; let i=index">
-        <ion-item-divider *ngIf="mon > 0">
-            {{mon}} 월
-        </ion-item-divider>
-        <div *ngFor="let list of list_time">
-          <ion-item *ngIf="mon==(list['date'][0] | date:'MM')" (click)="goDetailPage(list)" detail-push>
-            <ion-thumbnail item-left>
-              <img src="{{list.img}}">
-            </ion-thumbnail>
-            {{list.title}}
-          </ion-item>
-        </div>
-      </div> -->
     </ion-list>
 
     <ion-list id="group" *ngSwitchCase="'group'">

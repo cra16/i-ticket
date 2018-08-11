@@ -20,7 +20,7 @@ export class SellerMainPage {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
-    // this.screen.lock('portrait');
+    this.screen.lock('portrait');
     this.initialize();
   }
 
@@ -30,12 +30,6 @@ export class SellerMainPage {
             .collection('concerts').valueChanges().subscribe(data => {
               this.concert_list = data ;
             }) ;
-    // for(let i = 0 ; i < this.concert_list.length ; i++) {
-    //   let Ref = this.afs.collection('concerts').doc(this.concert_list[i]['id']) ;
-    //   for (let j = 0 ; j < this.concert_list['date'].length ; j ++){
-    //     console.log("hi~") ;
-    //   }
-    // }
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SellerMainPage');

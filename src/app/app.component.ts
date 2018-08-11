@@ -8,12 +8,9 @@ import { ListPage } from '../pages/list/list';
 import { MyListPage } from '../pages/my-list/my-list';
 import { LoginPage } from '../pages/login/login';
 import { DetailPage } from '../pages/detail/detail';
-import { BookingPage } from '../pages/booking/booking';
 import { SellerLoginPage } from '../pages/seller-login/seller-login';
 import { SellerRegisterPage } from '../pages/seller-register/seller-register';
 import { SellerMainPage } from '../pages/seller-main/seller-main';
-import { TicketInfoPage } from '../pages/ticket-info/ticket-info';
-import { SellerTicketManagePage } from '../pages/seller-ticket-manage/seller-ticket-manage';
 
 import { AuthProvider } from '../providers/auth/auth';
 import { UserProvider } from '../providers/user/user'

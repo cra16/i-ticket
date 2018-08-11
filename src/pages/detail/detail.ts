@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-
-import { BookingPage } from '../booking/booking';
-import { ListPage } from '../list/list';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
-import { SellerRegisterPage } from '../seller-register/seller-register';
 import { SellerEditPage } from '../seller-edit/seller-edit';
 import { AngularFirestore } from 'angularfire2/firestore';
 import firebase from 'firebase';
@@ -82,12 +78,6 @@ export class DetailPage {
       this.sellerPhonenumber = this.sellerInfo['phoneNumber'];
     })
   }
-
-  // 예약 진행 페이지로 이동한다
-  goBookingPage() {
-    this.navCtrl.push(BookingPage, { concert_obj: this.concert });
-  }
-
   //공연정보 삭제 기능 (이 공연을 등록한 판매자에게만 보이게 해야한다.)
   deleteItem() {
     let confirm = this.alertCtrl.create({

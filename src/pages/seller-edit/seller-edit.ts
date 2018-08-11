@@ -47,7 +47,7 @@ export class SellerEditPage {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
-    // this.screen.lock('portrait');
+    this.screen.lock('portrait');
 
     let backAction = platform.registerBackButtonAction(() => {
       this.navCtrl.pop();
@@ -74,56 +74,6 @@ export class SellerEditPage {
       { status: '판매 중', value: '판매 중' },
       { status: '종료된 공연', value: '판매 종료' }
     ]
-  //   this.count_date = this.concert['date'].length
-  //   //날짜 추가 삭제 카운트
-  //   if (this.concert['date'][1] == null) {
-  //     this.count = 1;
-  //   }
-  //   else if (this.concert['date'][2] == null) {
-  //     this.count = 2;
-  //   }
-  //   else if (this.concert['date'][3] == null) {
-  //     this.count = 3;
-  //   }
-  //   else if (this.concert['date'][4] == null) {
-  //     this.count = 4;
-  //   }
-  //   else {
-  //     this.count = 5;
-  //   }
-  //   //date형식을 iso date형식으로 변환하여 ion-datetime에서 읽을수 있게함
-  //   for(let i = 0; i < this.count_date; i++)
-  //   {
-  //     this.concert['date'][i] = this.concert['date'][i].toISOString();
-  //   }
-  // }
-  // //날짜 추가 기능 (리팩토링 필요)
-  // addDatetime() {
-  //   this.count++;
-  //   this.concert['date'].push()
-  // }
-  // //날짜 삭제 기능(리팩토링 필요)
-  // deleteDatetime(i) {
-    
-  //   if (i == 1) {
-  //     this.concert['date'][1] = this.concert['date'][2]
-  //     this.concert['date'][2] = this.concert['date'][3]
-  //     this.concert['date'][3] = this.concert['date'][4]
-  //     this.concert['date'][4] = null
-  //   }
-  //   if (i == 2) {
-  //     this.concert['date'][2] = this.concert['date'][3]
-  //     this.concert['date'][3] = this.concert['date'][4]
-  //     this.concert['date'][4] = null
-  //   }
-  //   if (i == 3) {
-  //     this.concert['date'][3] = this.concert['date'][4]
-  //     this.concert['date'][4] = null
-  //   }
-  //   if (i == 4) {
-  //     this.concert['date'][4] = null
-  //   }
-  //   this.count--;
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SellerEditPage');
@@ -176,9 +126,7 @@ export class SellerEditPage {
   updateConcert() {
     let url;
     let update;
-    // for (let i = 0; i < this.count_date; i++) {
-    //   this.concert['date'][i] = new Date(this.concert['date'][i])
-    // }
+
     //이미지를 새로 추가했을 시 사진을 다시 스토리지에 저장 후, 새로운 URL 데이터베이스에 저장
     if (this.image != null) {
       const storageRef2: firebase.storage.Reference = firebase.storage().ref('/picture/' + this.concert['title']);
@@ -188,13 +136,7 @@ export class SellerEditPage {
         //동시에 데이터베이스에 정보 업뎃
         update = this.afs.collection("concerts").doc(this.concert['id']).update(this.concert)
         url = this.afs.collection("concerts").doc(this.concert['id']).update({ img: this.imgUrl })
-        //수정된 날짜 데이터 업데이트
-        // for (let i = 0; i < this.count_date; i++) {
-        //   let sellerRef = this.afs.doc(`concerts/${this.concert['id']}/date/${i}`)
-        //   sellerRef.update({
-        //     date: new Date(this.concert['date'][i])
-        //   })
-        // }
+
       }).catch(error => {
         console.log("@ uploadTask error : " + error);
       });
@@ -202,12 +144,6 @@ export class SellerEditPage {
     //이미지를 추가하지 않았을 시 기존 이미지 URL 변동없이 새로운 데이터만 업데이트
     else if (this.image == null) {
       url = this.afs.collection("concerts").doc(this.concert['id']).update(this.concert)
-      // for (let i = 0; i < this.count_date; i++) {
-      //   let sellerRef = this.afs.doc(`concerts/${this.concert['id']}/date/${i}`)
-      //   sellerRef.update({
-      //     date: new Date(this.concert['date'][i])
-      //   })
-      // }
     }
     let alert = this.alertCtrl.create({
       title: '수정완료',

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
-import { SellerRegisterPage } from '../seller-register/seller-register';
 import { DetailPage } from '../detail/detail';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -32,7 +31,7 @@ export class ListPage {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
-    // this.screen.lock('portrait');
+    this.screen.lock('portrait');
     let backAction = platform.registerBackButtonAction(() => {
       this.navCtrl.pop();
       backAction();
@@ -84,15 +83,6 @@ export class ListPage {
         this.monthForView[11 - i] = i + 1;
       }
     }
-
-    // console.log(much);
-    // this.month = Array(much);
-
-    // for (var j = 0 ; j < much ; j++) {
-    //   this.month[j] = this.n(j);
-    // }
-
-    //onsole.log(this.month);
   }
 
   getGroup(parm) {

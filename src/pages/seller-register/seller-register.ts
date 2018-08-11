@@ -58,7 +58,7 @@ export class SellerRegisterPage {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
-    // this.screen.lock('portrait');
+    this.screen.lock('portrait');
 
     this.initialize_seat();
     //장르와 장소 공연상태 목록 
