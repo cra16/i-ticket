@@ -35,6 +35,8 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { firebaseKey } from '../key/firebaseKey';
+import { AlertProvider } from '../providers/alert/alert';
+
 export const firebaseConfig = {
       apiKey: firebaseKey['apiKey'],
       authDomain: firebaseKey['authDomain'],
@@ -109,7 +111,8 @@ export const firebaseConfig = {
     AngularFireAuth,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     StarProvider,
-    AngularFireDatabase
+    AngularFireDatabase,
+    AlertProvider
   ]
 })
 export class AppModule {}
