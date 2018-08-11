@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { GooglePlus } from '@ionic-native/google-plus';
 import firebase from 'firebase';
-import { ToastController, NavController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { LoadingController, AlertController, Alert } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-// Page
-import { LoginPage } from '../../pages/login/login';
 
 interface User {
   uid: string;
@@ -24,7 +22,6 @@ export class AuthProvider {
   constructor(public afs: AngularFirestore,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
-    public navCtrl: NavController,
     public afAuth: AngularFireAuth,
     public toastCtrl: ToastController,
     private googlePlus: GooglePlus) {
@@ -74,7 +71,6 @@ export class AuthProvider {
     const userId: string = firebase.auth().currentUser.uid;
     firebase.database().ref(`/userProfile/${userId}`).off();
     this.googlePlus.logout();
-    this.navCtrl.setRoot(LoginPage);
     return firebase.auth().signOut();
   }
   /////////////////////////////////////////////////////구글 로그인///////////////////////////////////////////////////////////////////////////
