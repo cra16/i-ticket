@@ -56,7 +56,4 @@ export class MyListPage {
       });
   }
 
-  goTicketInfoPage(ticket_idx) {
-    this.navCtrl.push(TicketInfoPage, { 'ticket_idx': ticket_idx });
-  }
 }
