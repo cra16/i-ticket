@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController, ToastController, Platform, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController, Platform, AlertController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ListPage } from '../list/list';
 import { TicketProvider } from '../../providers/ticket/ticket';
 import firebase from 'firebase';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
-import { UserProvider } from '../../providers/user/user';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { SellerMainPage } from '../seller-main/seller-main';
+// providers
+import { AlertProvider } from '../../providers/alert/alert';
+import { UserProvider } from '../../providers/user/user';
 
 @Component({
   selector: 'page-seller-register',
@@ -47,14 +49,11 @@ export class SellerRegisterPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private camera: Camera, public actionSheetCtrl: ActionSheetController,
-    public toastCtrl: ToastController,
-    public platform: Platform,
-    public af: AngularFireDatabase,
-    public alertCtrl: AlertController,
-    public afs: AngularFirestore,
-    public ticket: TicketProvider,
-    public user: UserProvider,
-    private screen: ScreenOrientation) {
+    public alertProvider: AlertProvider, public platform: Platform,
+    public af: AngularFireDatabase, public alertCtrl: AlertController,
+    public afs: AngularFirestore, public ticket: TicketProvider,
+    public user: UserProvider, private screen: ScreenOrientation,
+    ) {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
@@ -112,20 +111,11 @@ export class SellerRegisterPage {
       correctOrientation: true
     }).then((imageData) => {
       this.image = 'data:image/jpeg;base64,' + imageData;
-      this.presentToast('이미지가 성공적으로 추가 되었습니다.');
+      this.alertProvider.presentToast('이미지가 성공적으로 추가 되었습니다.');
     }).catch(error => {
       console.log("@ camera getPicture error : " + error);
-      this.presentToast('이미지를 선택하는 동안 에러가 발생했습니다.');
+      this.alertProvider.presentToast('이미지를 선택하는 동안 에러가 발생했습니다.');
     });
-  }
-  //정보메시지 표시(에러메시지 등)
-  private presentToast(text) {
-    let toast = this.toastCtrl.create({
-      message: text,
-      duration: 3000,
-      position: 'top'
-    });
-    toast.present();
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad SellerRegisterPage');
