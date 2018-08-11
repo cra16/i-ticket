@@ -3,7 +3,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AngularFirestore } from 'angularfire2/firestore';
 import firebase from 'firebase';
 import { TicketProvider } from '../../providers/ticket/ticket';
-import { TicketInfoPage } from '../ticket-info/ticket-info';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 @Component({

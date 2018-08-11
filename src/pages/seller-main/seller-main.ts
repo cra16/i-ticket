@@ -20,7 +20,7 @@ export class SellerMainPage {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
-    this.screen.lock('portrait');
+    //this.screen.lock('portrait');
     this.initialize();
   }
 
