@@ -53,7 +53,7 @@ export class DetailPage {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
-    // this.screen.lock('portrait');
+    this.screen.lock('portrait');
     //백버튼눌렀을시 전페이지로
     let backAction = platform.registerBackButtonAction(() => {
       this.navCtrl.pop();
