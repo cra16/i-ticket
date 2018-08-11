@@ -7,6 +7,7 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Platform } from 'ionic-angular/platform/platform';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { SellerMainPage } from '../seller-main/seller-main';
+import { UserProvider } from '../../providers/user/user';
 
 @Component({
   selector: 'page-seller-edit',
@@ -35,6 +36,7 @@ export class SellerEditPage {
   num: number = 0;
   count_date: number = 0;
 
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public actionSheetCtrl: ActionSheetController,
@@ -43,7 +45,8 @@ export class SellerEditPage {
     public toastCtrl: ToastController,
     public afs: AngularFirestore,
     public platform: Platform,
-    private screen: ScreenOrientation) {
+    private screen: ScreenOrientation,
+    public user: UserProvider) {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
@@ -126,6 +129,7 @@ export class SellerEditPage {
   updateConcert() {
     let url;
     let update;
+    let userupdate;
 
     //이미지를 새로 추가했을 시 사진을 다시 스토리지에 저장 후, 새로운 URL 데이터베이스에 저장
     if (this.image != null) {
@@ -145,11 +149,15 @@ export class SellerEditPage {
     else if (this.image == null) {
       url = this.afs.collection("concerts").doc(this.concert['id']).update(this.concert)
     }
+
+    userupdate = this.afs.collection('userProfile').doc(this.user.obj['uid']).collection('concerts').doc(this.concert['id']).update(this.concert)
     let alert = this.alertCtrl.create({
       title: '수정완료',
       subTitle: '수정이 성공적으로 반영되었습니다.',
       buttons: ['OK']
     });
+    
+
     alert.present();
     this.navCtrl.setRoot(SellerMainPage);
   }
