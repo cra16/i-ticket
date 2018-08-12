@@ -29,13 +29,8 @@
     "@ionic-native/status-bar": "4.4.0",
     "@ionic/storage": "2.1.3",
     "angularfire2": "^5.0.0-rc.4",
-<<<<<<< HEAD
     "cordova-android": "^7.1.1",
     "cordova-ios": "4.5.5",
-=======
-    "cordova-android": "7.0.0",
-    "cordova-ios": "^4.5.5",
->>>>>>> ed0615b05d390f507ff28269f623e9aa1d719295
     "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-device": "^1.1.7",
     "cordova-plugin-googleplus": "^5.3.0",
