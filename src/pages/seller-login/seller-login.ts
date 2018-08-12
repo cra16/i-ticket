@@ -14,6 +14,7 @@ import { MainPage } from '../main/main';
 import { SellerResetPwdPage } from '../seller-reset-pwd/seller-reset-pwd';
 import { SellerSignupPage } from '../seller-signup/seller-signup';
 import { SellerMainPage } from '../seller-main/seller-main';
+import { SellerSettingPage } from '../seller-setting/seller-setting';
 
 @IonicPage()
 @Component({
@@ -63,8 +64,16 @@ export class SellerLoginPage {
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
       this.authProvider.loginUser(email, password).then(authData => {
+        this.navCtrl.setRoot(SellerMainPage);
         this.loading.dismiss().then(() => {
-          this.navCtrl.setRoot(SellerMainPage);
+          if (!(authData.sellerImg && authData.sellerIntroduce)) {
+            this.navCtrl.push(SellerSettingPage);
+            const alert: Alert = this.alertCtrl.create({
+              message: "단체 정보를 아직 입력하지 않으셨네요!",
+              buttons: [{ text: 'Ok', role: 'cancel' }]
+            });
+            alert.present();
+          }
         }).catch(error => {
           console.log("@ loading dismiss error : " + error);
         });
