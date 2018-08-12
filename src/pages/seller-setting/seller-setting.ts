@@ -47,7 +47,7 @@ export class SellerSettingPage {
       this.phoneNumber = this.userprofile['phoneNumber'];
       this.introduce = this.userprofile['sellerIntroduce'];
       // check if user set profile image
-      this.userprofile['photoURL'] == "null" ? this.image = "../../assets/imgs/defaultImage.jpg" : console.log("이미 프사를 등록했군용")
+      this.userprofile['photoURL'] == "null" ? this.image = "https://firebasestorage.googleapis.com/v0/b/iticket-282a8.appspot.com/o/defaultImage.jpg?alt=media&token=6a7263a8-4127-40bc-b65a-7c2d5335fe33" : console.log("이미 프사를 등록했군용")
     })
   } // constructor
 
