@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController, ToastController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { ListPage } from '../list/list';
 import firebase from 'firebase';
@@ -8,6 +8,8 @@ import { Platform } from 'ionic-angular/platform/platform';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { SellerMainPage } from '../seller-main/seller-main';
 import { UserProvider } from '../../providers/user/user';
+// providers
+import { AlertProvider } from '../../providers/alert/alert';
 
 @Component({
   selector: 'page-seller-edit',
@@ -38,15 +40,12 @@ export class SellerEditPage {
 
 
   constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    public actionSheetCtrl: ActionSheetController,
-    private camera: Camera,
-    public alertCtrl: AlertController,
-    public toastCtrl: ToastController,
-    public afs: AngularFirestore,
-    public platform: Platform,
-    private screen: ScreenOrientation,
-    public user: UserProvider) {
+    public navParams: NavParams, public actionSheetCtrl: ActionSheetController,
+    private camera: Camera, public alertCtrl: AlertController,
+    public afs: AngularFirestore, public alertProvider: AlertProvider,
+    public platform: Platform, private screen: ScreenOrientation,
+    public user: UserProvider,
+    ) {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
@@ -110,20 +109,11 @@ export class SellerEditPage {
       correctOrientation: true
     }).then((imageData) => {
       this.image = 'data:image/jpeg;base64,' + imageData;
-      this.presentToast('이미지가 성공적으로 추가 되었습니다.');
+      this.alertProvider.presentToast('이미지가 성공적으로 추가 되었습니다.');
     }).catch(error => {
-      this.presentToast('이미지를 선택하는 동안 에러가 발생했습니다.');
+      this.alertProvider.presentToast('이미지를 선택하는 동안 에러가 발생했습니다.');
       console.log("@ getPicture error : " + error);
     });
-  }
-  //정보메시지 표시(에러메시지 등)
-  private presentToast(text) {
-    let toast = this.toastCtrl.create({
-      message: text,
-      duration: 3000,
-      position: 'top'
-    });
-    toast.present();
   }
   //등록완료 버튼 누를 시 입력한 정보를 데이터 베이스의 값을 업데이트 해주는 기능
   updateConcert() {

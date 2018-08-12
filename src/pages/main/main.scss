@@ -30,25 +30,25 @@ page-main {
 			margin-top: 22px;
 			margin-bottom: 20px;
 
-			.slide-content {
-				transition: margin-left 0.2s, width 0.2s;
-				transition-timing-function: ease;
+			// .slide-content {
+			// 	transition: margin-left 0.2s, width 0.2s;
+			// 	transition-timing-function: ease;
 
-				&:first-of-type.swiper-slide-active {
-					margin-left: 10vw;
-				}
+			// 	&:first-of-type.swiper-slide-active {
+			// 		margin-left: 10vw;
+			// 	}
 
-				&.swiper-slide-prev {
-					margin-left: 38vw;
-					width: 74vw !important;
-				}
-				&.swiper-slide-active {
-					width: 74vw !important;
-				}
-				&.swiper-slide-next {
-					width: 74vw !important;
-				}
-			}
+			// 	&.swiper-slide-prev {
+			// 		margin-left: 38vw;
+			// 		width: 74vw !important;
+			// 	}
+			// 	&.swiper-slide-active {
+			// 		width: 74vw !important;
+			// 	}
+			// 	&.swiper-slide-next {
+			// 		width: 74vw !important;
+			// 	}
+			// }
 		}
 
 		.slide-image {

@@ -38,7 +38,7 @@ export class SellerSignupPage {
       backAction();
     }, 2) ;
     this.menu=menu;
-    // this.menu.enable(false,'myMenu')
+    // this.menu.enable(false,'myMenu');
     // 위의 주석을 해제하면 Sidemenu가 사용 불가능해짐
     this.signupForm = formBuilder.group({
       name: ['', Validators.compose([Validators.minLength(2), Validators.required])],
