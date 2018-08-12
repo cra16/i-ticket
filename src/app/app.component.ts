@@ -53,13 +53,10 @@ export class MyApp {
   concert: Observable<any>;
   public counter=0;
 
-  constructor(public platform: Platform,
-              public statusBar: StatusBar,
-              public splashScreen: SplashScreen,
-              public authProvider: AuthProvider,
-              public userProvider: UserProvider,
-              private afs: AngularFirestore,
-              public toastCtrl: ToastController) {
+  constructor(public platform: Platform, public statusBar: StatusBar,
+    public splashScreen: SplashScreen, public authProvider: AuthProvider,
+    public userProvider: UserProvider, private afs: AngularFirestore,
+    public toastCtrl: ToastController) {
     this.initializeApp();
 
     platform.ready().then(() => {
@@ -99,10 +96,10 @@ export class MyApp {
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.rootPage = MainPage;
         this.userProvider.initialize(user).then(() => {
-        this.user_id = this.userProvider.getGroupName();
-        this.user_email = this.userProvider.getEmail();
+          this.user_id = this.userProvider.getGroupName();
+          this.user_email = this.userProvider.getEmail();
+          this.userProvider.getIsSeller() ? this.rootPage = SellerMainPage : this.rootPage = MainPage
         }).catch(error => {
           console.log("@ userProvider initialize error : " + error);
         });

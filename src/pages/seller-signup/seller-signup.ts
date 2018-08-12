@@ -12,6 +12,7 @@ import { EmailValidator } from '../../validators/email';
 import { PhoneValidator } from '../../validators/phone';
 // Page
 import { SellerLoginPage } from '../seller-login/seller-login';
+import { SellerMainPage } from '../seller-main/seller-main';
 
 @IonicPage()
 @Component({
@@ -82,7 +83,8 @@ export class SellerSignupPage {
             TODO: 회원가입이 되면, auth를 통해서 로그인을 시키고
             자동으로 sellerMainPage로 리다이렉트 시키는 게 좋아보인다.
             */
-            this.navCtrl.setRoot(SellerLoginPage);
+            this.authProvider.loginUser(email, password);
+            this.navCtrl.setRoot(SellerMainPage);
           }
         }).catch(error => {
           console.log("@ loading.dismiss error : " + error);

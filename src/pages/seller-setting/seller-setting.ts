@@ -27,6 +27,7 @@ export class SellerSettingPage {
   userRef: Observable<any>;
   img: any;
   introduce: any;
+  private imageChanged: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public actionSheetCtrl: ActionSheetController, public camera: Camera,
@@ -37,7 +38,7 @@ export class SellerSettingPage {
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
     this.screen.lock('portrait');
-
+    this.user.getSellerImg() == 'null' ? this.imageChanged = false : this.imageChanged = true
     this.groupname = user.getGroupName();
     this.uid = user.getUID();
     // TODO: 코드 줄일 수 있을 듯 한데... by walter
@@ -47,7 +48,7 @@ export class SellerSettingPage {
       this.phoneNumber = this.userprofile['phoneNumber'];
       this.introduce = this.userprofile['sellerIntroduce'];
       // check if user set profile image
-      this.userprofile['photoURL'] == "null" ? this.image = "https://firebasestorage.googleapis.com/v0/b/iticket-282a8.appspot.com/o/defaultImage.jpg?alt=media&token=6a7263a8-4127-40bc-b65a-7c2d5335fe33" : console.log("이미 프사를 등록했군용")
+      this.userprofile['sellerImg'] == "null" ? this.image = "https://firebasestorage.googleapis.com/v0/b/iticket-282a8.appspot.com/o/defaultImage.jpg?alt=media&token=6a7263a8-4127-40bc-b65a-7c2d5335fe33" : console.log("이미 프사를 등록했군용")
     })
   } // constructor
 
@@ -82,6 +83,7 @@ export class SellerSettingPage {
     }).then((imageData) => {
       this.image = 'data:image/jpeg;base64,' + imageData;
       this.alertProvider.presentToast('이미지가 성공적으로 추가 되었습니다.');
+      this.imageChanged = true;
     }).catch(error => {
       console.log("@ camera.getPicture error : " + error);
       this.alertProvider.presentToast('이미지를 선택하는 동안 에러가 발생했습니다.');
