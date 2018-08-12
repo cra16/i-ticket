@@ -12,6 +12,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { TicketProvider } from '../providers/ticket/ticket' ;
 import { StarProvider } from '../providers/star/star';
 import { UserProvider } from '../providers/user/user';
+import { AlertProvider } from '../providers/alert/alert';
 // Page
 import { MyApp } from './app.component';
 import { MyListPage } from '../pages/my-list/my-list';
@@ -29,6 +30,7 @@ import { SellerMyListPage } from '../pages/seller-my-list/seller-my-list';
 import { SellerSettingPage } from '../pages/seller-setting/seller-setting';
 import { SellerSignupPage } from '../pages/seller-signup/seller-signup';
 import { SettingPage } from '../pages/setting/setting';
+import { PolicyPage } from '../pages/policy/policy';
 // Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -36,9 +38,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 import { firebaseKey } from '../key/firebaseKey';
-import { AlertProvider } from '../providers/alert/alert';
 
-import { PolicyPage } from '../pages/policy/policy';
 
 export const firebaseConfig = {
       apiKey: firebaseKey['apiKey'],

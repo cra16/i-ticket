@@ -28,7 +28,7 @@ export class LoginPage {
     this.screen.lock('portrait');
 
     this.menu=menu;
-    // this.menu.enable(false,'myMenu')
+    this.menu.enable(false,'myMenu');
     // 위의 문장을 주석 처리하면 Sidemenu가 사용 가능해짐
   }
   

@@ -40,7 +40,7 @@ export class SellerLoginPage {
     }, 2)
 
     this.menu = menu;
-    // this.menu.enable(false,'myMenu')
+    // this.menu.enable(false,'myMenu');
     // 위의 문장을 주석 처리하면 Sidemenu가 사용 가능해짐
     this.loginForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],

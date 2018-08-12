@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { ListPage } from '../list/list';
 import { DetailPage } from '../detail/detail';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
@@ -23,7 +23,8 @@ export class MainPage {
 	user_name: any;
 
 	constructor(public navCtrl: NavController,
-		        public afs: AngularFirestore,
+						public afs: AngularFirestore, 
+						public menu: MenuController,
 				public userProvider: UserProvider,
 				private screen: ScreenOrientation) {
 		// Lock vertical screen             
@@ -31,6 +32,8 @@ export class MainPage {
 		// 마지막에 주석해제 하면 됨.
 		this.screen.lock('portraitv');
 
+    this.menu=menu;
+    this.menu.enable(true,'myMenu');
 		this.initializeApp();
 		this.initializeItems();
 	}
