@@ -34,6 +34,7 @@ $RECYCLE.BIN/
 src/key/
 google-services.json
 firebaseKey.ts
+*.jks
 
 .DS_Store
 Thumbs.db
