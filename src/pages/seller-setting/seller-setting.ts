@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular/components/action-sheet/action-sheet-controller';
 import { Camera } from '@ionic-native/camera';
-import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { AngularFirestore } from 'angularfire2/firestore';
 import firebase from 'firebase';
@@ -11,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 // Provider
 import { UserProvider } from '../../providers/user/user';
+import { AlertProvider } from '../../providers/alert/alert';
 
 @Component({
   selector: 'page-seller-setting',
@@ -30,7 +30,7 @@ export class SellerSettingPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public actionSheetCtrl: ActionSheetController, public camera: Camera,
-    public toastCtrl: ToastController, public user: UserProvider,
+    public alertProvider: AlertProvider, public user: UserProvider,
     public afs: AngularFirestore, public alertCtrl: AlertController,
     private screen: ScreenOrientation) {
     // Lock vertical screen
@@ -47,7 +47,7 @@ export class SellerSettingPage {
       this.phoneNumber = this.userprofile['phoneNumber'];
       this.introduce = this.userprofile['sellerIntroduce'];
       // check if user set profile image
-      this.userprofile['photoURL'] == "null" ? this.image = "../../assets/imgs/defaultImage.jpg" : console.log("이미 프사를 등록했군용")
+      this.userprofile['photoURL'] == "null" ? this.image = "https://firebasestorage.googleapis.com/v0/b/iticket-282a8.appspot.com/o/defaultImage.jpg?alt=media&token=6a7263a8-4127-40bc-b65a-7c2d5335fe33" : console.log("이미 프사를 등록했군용")
     })
   } // constructor
 
@@ -81,21 +81,11 @@ export class SellerSettingPage {
       correctOrientation: true
     }).then((imageData) => {
       this.image = 'data:image/jpeg;base64,' + imageData;
-      this.presentToast('이미지가 성공적으로 추가 되었습니다.');
+      this.alertProvider.presentToast('이미지가 성공적으로 추가 되었습니다.');
     }).catch(error => {
       console.log("@ camera.getPicture error : " + error);
-      this.presentToast('이미지를 선택하는 동안 에러가 발생했습니다.');
+      this.alertProvider.presentToast('이미지를 선택하는 동안 에러가 발생했습니다.');
     });
-  }
-  //정보메시지 표시(에러메시지 등)
-  // TODO: toast, alert 뿌리는 걸 provider로 제공하면 좋을 듯, 여기저기서 쓰이니까 by walter
-  private presentToast(text) {
-    let toast = this.toastCtrl.create({
-      message: text,
-      duration: 2000,
-      position: 'bottom'
-    });
-    toast.present();
   }
   // 등록하면 사진, 연락처, 공연소개 부분이 유저의 정보로 업데이트됨.
   updateSellerInfo() {
@@ -127,7 +117,7 @@ export class SellerSettingPage {
         console.log("@ afs.doc.update error : " + error);
       });
     }
-    this.presentToast(editCompletedToastMessage);
+    this.alertProvider.presentToast(editCompletedToastMessage);
 
   }
 }

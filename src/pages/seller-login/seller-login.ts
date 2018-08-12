@@ -13,6 +13,7 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { MainPage } from '../main/main';
 import { SellerResetPwdPage } from '../seller-reset-pwd/seller-reset-pwd';
 import { SellerSignupPage } from '../seller-signup/seller-signup';
+import { SellerMainPage } from '../seller-main/seller-main';
 
 @IonicPage()
 @Component({
@@ -39,7 +40,7 @@ export class SellerLoginPage {
     }, 2)
 
     this.menu = menu;
-    // this.menu.enable(false,'myMenu')
+    // this.menu.enable(false,'myMenu');
     // 위의 문장을 주석 처리하면 Sidemenu가 사용 가능해짐
     this.loginForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -63,7 +64,7 @@ export class SellerLoginPage {
       const password = this.loginForm.value.password;
       this.authProvider.loginUser(email, password).then(authData => {
         this.loading.dismiss().then(() => {
-          this.navCtrl.setRoot(MainPage);
+          this.navCtrl.setRoot(SellerMainPage);
         }).catch(error => {
           console.log("@ loading dismiss error : " + error);
         });
