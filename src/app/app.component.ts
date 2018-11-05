@@ -14,7 +14,7 @@ import { SellerRegisterPage } from '../pages/seller-register/seller-register';
 import { SellerMainPage } from '../pages/seller-main/seller-main';
 import { TicketInfoPage } from '../pages/ticket-info/ticket-info';
 import { SellerTicketManagePage } from '../pages/seller-ticket-manage/seller-ticket-manage';
-
+import { SettingPage } from '../pages/setting/setting';
 import { AuthProvider } from '../providers/auth/auth';
 import { UserProvider } from '../providers/user/user'
 
@@ -105,6 +105,7 @@ export class MyApp {
         this.userProvider.initialize(user).then(() => {
         this.user_id = this.userProvider.getGroupName();
         this.user_email = this.userProvider.getEmail();
+        this.userProvider.getIsSeller() ? this.rootPage = SellerMainPage : this.rootPage = MainPage
         }).catch(error => {
           console.log("@ userProvider initialize error : " + error);
         });
@@ -125,7 +126,7 @@ export class MyApp {
     this.userProvider.getIsSeller() == true ? this.navCtrl.setRoot(SellerMyListPage) : this.navCtrl.setRoot(MyListPage) ;
   }
   goSettingPage() {
-    this.userProvider.getIsSeller() == true ? this.navCtrl.push(SellerSettingPage) : this.navCtrl.setRoot(MyListPage) ;
+    this.userProvider.getIsSeller() == true ? this.navCtrl.push(SellerSettingPage) : this.navCtrl.setRoot(SettingPage) ;
   }
   Logout() {
     this.authProvider.logoutUser().then(() => {

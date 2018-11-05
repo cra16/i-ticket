@@ -2,8 +2,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular/components/action-sheet/action-sheet-controller';
-import { Camera } from '@ionic-native/camera';
-import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import { Camera } from '@ionic-native/camera'; 
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { AngularFirestore } from 'angularfire2/firestore';
 import firebase from 'firebase';
@@ -11,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 // Provider
 import { UserProvider } from '../../providers/user/user';
+import { AlertProvider } from '../../providers/alert/alert';
 // Page
 import { SellerMainPage } from '../seller-main/seller-main';
 
@@ -29,16 +29,19 @@ export class SellerSettingPage {
   userRef: Observable<any>;
   img: any;
   introduce: any;
+  private imageChanged: boolean = false;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public actionSheetCtrl: ActionSheetController, public camera: Camera,
-    public toastCtrl: ToastController, public user: UserProvider,
+    public alertProvider: AlertProvider, public user: UserProvider,
     public afs: AngularFirestore, public alertCtrl: AlertController,
     private screen: ScreenOrientation) {
     // Lock vertical screen
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
     // this.screen.lock('portrait');
+    this.user.getSellerImg() == 'null' ? this.imageChanged = false : this.imageChanged = true
 
     this.groupname = user.getGroupName();
     this.uid = user.getUID();
@@ -49,7 +52,7 @@ export class SellerSettingPage {
       this.phoneNumber = this.userprofile['phoneNumber'];
       this.introduce = this.userprofile['sellerIntroduce'];
       // check if user set profile image
-      this.userprofile['photoURL'] == "null" ? this.image = "../../assets/imgs/defaultImage.jpg" : console.log("이미 프사를 등록했군용")
+      this.userprofile['sellerImg'] == "null" ? this.image = "https://firebasestorage.googleapis.com/v0/b/iticket-282a8.appspot.com/o/defaultImage.jpg?alt=media&token=6a7263a8-4127-40bc-b65a-7c2d5335fe33" : console.log("이미 프사를 등록했군용")
     })
   } // constructor
 
@@ -83,21 +86,13 @@ export class SellerSettingPage {
       correctOrientation: true
     }).then((imageData) => {
       this.image = 'data:image/jpeg;base64,' + imageData;
-      this.presentToast('이미지가 성공적으로 추가 되었습니다.');
+      this.alertProvider.presentToast('이미지가 성공적으로 추가 되었습니다.');
+      this.imageChanged = true;
+
     }).catch(error => {
       console.log("@ camera.getPicture error : " + error);
-      this.presentToast('이미지를 선택하는 동안 에러가 발생했습니다.');
+      this.alertProvider.presentToast('이미지를 선택하는 동안 에러가 발생했습니다.');
     });
-  }
-  //정보메시지 표시(에러메시지 등)
-  // TODO: toast, alert 뿌리는 걸 provider로 제공하면 좋을 듯, 여기저기서 쓰이니까 by walter
-  private presentToast(text) {
-    let toast = this.toastCtrl.create({
-      message: text,
-      duration: 2000,
-      position: 'bottom'
-    });
-    toast.present();
   }
   // 등록하면 사진, 연락처, 공연소개 부분이 유저의 정보로 업데이트됨.
   updateSellerInfo() {
@@ -129,16 +124,6 @@ export class SellerSettingPage {
         console.log("@ afs.doc.update error : " + error);
       });
     }
-    this.presentToast(editCompletedToastMessage);
-
-    //완료되면 알림창 표시
-    // let alert = this.alertCtrl.create({
-    //   title: '수정 완료',
-    //   subTitle: '판매자 정보가 성공적으로 수정되었습니다.',
-    //   buttons: ['OK']
-    // });
-    // alert.present();
-    // TODO: 정보가 수정되면, 단순 토스트만 띄우고 페이지 이동안하는 게 어떤가욥 by walter
-    // this.navCtrl.setRoot(SellerMainPage)
+    this.alertProvider.presentToast(editCompletedToastMessage);
   }
 }

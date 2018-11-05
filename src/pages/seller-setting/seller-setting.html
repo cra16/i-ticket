@@ -2,7 +2,7 @@
   <ion-navbar>
     <span class="title">판매자 정보 수정</span>
     <button class="top-button" menuToggle end>
-      <img src="assets/icon/icon-ticket.svg">
+      <img src="assets/icon/icon-ticket.png">
     </button>
   </ion-navbar>
 </ion-header>
@@ -29,6 +29,6 @@
   </div>
   <!-- TODO:단체 소개 내용에 아무것도 입력하지 않고 정보수정을 누르면 에러뜸 by walter -->
   <div class="button">
-    <button class="edit-button"(click)="updateSellerInfo()" [disabled]="isChanged">정보수정</button>
+    <button class="edit-button"(click)="updateSellerInfo()" [disabled]="imageChanged == false || phoneNumber==null || introduce==null ">정보수정</button>
   </div>
 </ion-content>

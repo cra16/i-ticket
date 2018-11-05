@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { GooglePlus } from '@ionic-native/google-plus';
 import firebase from 'firebase';
-import { ToastController } from 'ionic-angular';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { LoadingController, AlertController, Alert } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+// providers
+import { AlertProvider } from '../../providers/alert/alert';
 
 interface User {
   uid: string;
@@ -23,8 +24,8 @@ export class AuthProvider {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public afAuth: AngularFireAuth,
-    public toastCtrl: ToastController,
-    private googlePlus: GooglePlus) {
+    private googlePlus: GooglePlus,
+    public alertProvider: AlertProvider) {
       this.user = this.afAuth.authState
         .switchMap(user => {
           if (user) {
@@ -49,6 +50,7 @@ export class AuthProvider {
           uid: newUser.uid,
           isSeller: true,
           photoURL: "null",
+          sellerImg: "null",
         })
         return true;
       }).catch(error => {
@@ -71,6 +73,7 @@ export class AuthProvider {
     const userId: string = firebase.auth().currentUser.uid;
     firebase.database().ref(`/userProfile/${userId}`).off();
     this.googlePlus.logout();
+    this.alertProvider.presentToast("정상적으로 로그아웃되었습니다.");
     return firebase.auth().signOut();
   }
   /////////////////////////////////////////////////////구글 로그인///////////////////////////////////////////////////////////////////////////
@@ -84,14 +87,16 @@ export class AuthProvider {
       if (isHandongSplited[1] == "handong.edu") {
         var provider = firebase.auth.GoogleAuthProvider.credential(res.idToken);
         firebase.auth().signInWithCredential(provider).then((success) => {
-          this.updateUserData(success)
+          this.updateUserData(success);
+          return true;
         }).catch((error) => {
           console.log("Firebase failure: " + JSON.stringify(error));
         });
       }
       else {
-        this.presentToast("한동대학교 이메일로만 이용가능합니다.");
+        this.alertProvider.presentToast("한동대학교 이메일로만 이용가능합니다.");
         this.googlePlus.logout();
+        return false;
       }
     }).catch((gplusErr) => {
       console.log("GooglePlus failure: " + JSON.stringify(gplusErr));
@@ -109,14 +114,5 @@ export class AuthProvider {
       isSeller: false
     }
     this.afs.doc(`userProfile/${res.uid}`).set(data)
-  }
-
-  private presentToast(text) {
-    let toast = this.toastCtrl.create({
-      message: text,
-      duration: 5000,
-      position: 'bottom'
-    });
-    toast.present();
   }
 }

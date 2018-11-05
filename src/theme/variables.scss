@@ -14,6 +14,10 @@ $app-direction: ltr;
 
 @import "ionic.globals";
 
+// Font Awesome
+$fa-font-path: $font-path;
+@import "font-awesome";
+
 
 // Shared Variables
 // --------------------------------------------------

@@ -2,7 +2,7 @@
   <ion-navbar>
     <div class="title">공연 정보</div>
     <button class="top-button" menuToggle end>
-      <img src="assets/icon/icon-ticket.svg">
+      <img src="assets/icon/icon-ticket.png">
     </button>
   </ion-navbar>
 </ion-header>
@@ -52,7 +52,7 @@
       </p>
     </ion-row>
     <ion-row>
-      <star-review [hidden]="concert_status!='종료된 공연'" [uid]="uid" [concertId]="concertId"></star-review>
+      <star-review [hidden]="concert_status=='판매 예정'" [uid]="uid" [concertId]="concertId"></star-review>
     </ion-row>
     <ion-row justify-content-center>
       <button class="last-header" *ngIf="concert_status=='판매 중'" [disabled]="user.getIsSeller()==true" ion-button round small (click)="goBookingPage(concert_idx)">

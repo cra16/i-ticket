@@ -32,7 +32,7 @@ export class SellerResetPwdPage {
       backAction();
     }, 2)
 
-    // this.menu.enable(false,'myMenu')
+    // this.menu.enable(false,'myMenu');
     // 위의 문장을 주석 처리하면 Sidemenu가 사용 가능해짐
     this.resetPasswordForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])]

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController, ToastController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
 import { Camera } from '@ionic-native/camera';
 import { ListPage } from '../list/list';
 import firebase from 'firebase';
@@ -7,6 +7,10 @@ import { AngularFirestore } from 'angularfire2/firestore';
 import { Platform } from 'ionic-angular/platform/platform';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { SellerMainPage } from '../seller-main/seller-main';
+// providers
+import { AlertProvider } from '../../providers/alert/alert';
+import { UserProvider } from '../../providers/user/user';
+
 
 @Component({
   selector: 'page-seller-edit',
@@ -35,15 +39,11 @@ export class SellerEditPage {
   num: number = 0;
   count_date: number = 0;
 
-  constructor(public navCtrl: NavController,
-    public navParams: NavParams,
-    public actionSheetCtrl: ActionSheetController,
-    private camera: Camera,
-    public alertCtrl: AlertController,
-    public toastCtrl: ToastController,
-    public afs: AngularFirestore,
-    public platform: Platform,
-    private screen: ScreenOrientation) {
+  constructor(public navCtrl: NavController, public user: UserProvider,
+    public navParams: NavParams, public actionSheetCtrl: ActionSheetController,
+    private camera: Camera, public alertCtrl: AlertController,
+    public afs: AngularFirestore, public alertProvider: AlertProvider,
+    public platform: Platform, private screen: ScreenOrientation ) {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
@@ -157,28 +157,17 @@ export class SellerEditPage {
       correctOrientation: true
     }).then((imageData) => {
       this.image = 'data:image/jpeg;base64,' + imageData;
-      this.presentToast('이미지가 성공적으로 추가 되었습니다.');
+      this.alertProvider.presentToast('이미지가 성공적으로 추가 되었습니다.');
     }).catch(error => {
-      this.presentToast('이미지를 선택하는 동안 에러가 발생했습니다.');
+      this.alertProvider.presentToast('이미지를 선택하는 동안 에러가 발생했습니다.');
       console.log("@ getPicture error : " + error);
     });
-  }
-  //정보메시지 표시(에러메시지 등)
-  private presentToast(text) {
-    let toast = this.toastCtrl.create({
-      message: text,
-      duration: 3000,
-      position: 'top'
-    });
-    toast.present();
   }
   //등록완료 버튼 누를 시 입력한 정보를 데이터 베이스의 값을 업데이트 해주는 기능
   updateConcert() {
     let url;
     let update;
-    // for (let i = 0; i < this.count_date; i++) {
-    //   this.concert['date'][i] = new Date(this.concert['date'][i])
-    // }
+    let userupdate;
     //이미지를 새로 추가했을 시 사진을 다시 스토리지에 저장 후, 새로운 URL 데이터베이스에 저장
     if (this.image != null) {
       const storageRef2: firebase.storage.Reference = firebase.storage().ref('/picture/' + this.concert['title']);
@@ -188,13 +177,6 @@ export class SellerEditPage {
         //동시에 데이터베이스에 정보 업뎃
         update = this.afs.collection("concerts").doc(this.concert['id']).update(this.concert)
         url = this.afs.collection("concerts").doc(this.concert['id']).update({ img: this.imgUrl })
-        //수정된 날짜 데이터 업데이트
-        // for (let i = 0; i < this.count_date; i++) {
-        //   let sellerRef = this.afs.doc(`concerts/${this.concert['id']}/date/${i}`)
-        //   sellerRef.update({
-        //     date: new Date(this.concert['date'][i])
-        //   })
-        // }
       }).catch(error => {
         console.log("@ uploadTask error : " + error);
       });
@@ -209,6 +191,7 @@ export class SellerEditPage {
       //   })
       // }
     }
+    userupdate = this.afs.collection('userProfile').doc(this.user.obj['uid']).collection('concerts').doc(this.concert['id']).update(this.concert)
     let alert = this.alertCtrl.create({
       title: '수정완료',
       subTitle: '수정이 성공적으로 반영되었습니다.',
