@@ -11,7 +11,7 @@ export class UserProvider {
     private uid: string;
     private phoneNumber: string;
     private groupName: string;
-    private sellerImg: any;
+    private sellerImg: string;
     private sellerIntroduce: any;
     private photoURL: any;
     private isSeller: any;

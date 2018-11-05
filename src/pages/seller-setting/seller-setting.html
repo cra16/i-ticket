@@ -28,6 +28,6 @@
     </div>
   </div>
   <div class="button">
-    <button class="edit-button"(click)="updateSellerInfo()" [disabled]="phoneNumber==null || introduce==null ">정보수정</button>
+    <button class="edit-button"(click)="updateSellerInfo()" [disabled]="imageChanged == false || phoneNumber==null || introduce==null ">정보수정</button>
   </div>
 </ion-content>

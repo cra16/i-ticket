@@ -14,6 +14,7 @@ import { MainPage } from '../main/main';
 import { SellerResetPwdPage } from '../seller-reset-pwd/seller-reset-pwd';
 import { SellerSignupPage } from '../seller-signup/seller-signup';
 import { SellerMainPage } from '../seller-main/seller-main';
+import { SellerSettingPage } from '../seller-setting/seller-setting';
 
 @IonicPage()
 @Component({
@@ -63,8 +64,8 @@ export class SellerLoginPage {
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
       this.authProvider.loginUser(email, password).then(authData => {
+        this.navCtrl.setRoot(SellerMainPage);
         this.loading.dismiss().then(() => {
-          this.navCtrl.setRoot(SellerMainPage);
         }).catch(error => {
           console.log("@ loading dismiss error : " + error);
         });
