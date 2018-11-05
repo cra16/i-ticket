@@ -42,7 +42,8 @@ export class LoginPage {
   }
 
   googleLogin() {
-    if (this.authProvider.googleLogin())
+    //if (this.authProvider.googleLogin())
+    if (this.authProvider.googleLogin)
       this.navCtrl.setRoot(MainPage);
   }
 }
