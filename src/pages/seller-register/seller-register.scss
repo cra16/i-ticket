@@ -1,112 +1,101 @@
 page-seller-register {
-    ion-navbar{
-        box-shadow : 0px 5px 10px rgba(0, 0, 0, 0.1) ;
+  .header-img {
+    div.wrapper {
+      float: left;
+      position: relative;
+      overflow: hidden;
     }
-    ion-datetime{
-        text-align:center !important;
-        padding-left: 65px  !important;
+    .max-img {
+      height: 230px;
+      width: 100vw;
+      opacity: 0.9;
+      filter: blur(10px);
+      transform: scale(1.05);
     }
-    ion-item.item.item-block.item-select{
-        padding-left:125px;
+    .sub-img {
+      display: block;
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0; // width: 150px ;
+      height: 230*1.01px;
     }
-    button.disable-hover.item-button.button{
-        background-color: $dominant-main ;
+  }
+  .header-content {
+    h2 {
+      margin-top: 5px;
+      margin-bottom: 5px;
     }
-    ion-select.select{
-        max-width:130px !important;
-        padding-left: 0px;
-        div.select-icon{
-            width: 15px !important;
-        }
+    .genreTime {
+      text-align: center;
+      color: $dominant-gray;
     }
-    ion-input{
-        input{
-            text-align:center !important;
-        }
+    .date {
+      margin-top: 30px;
+      margin-bottom: 5px;
+      color: $dominant-gray;
     }
-    ::-webkit-input-placeholder {
-        font-size: 14px;
-        color: #d0cdfa;
-        text-transform: uppercase;
-        text-transform: uppercase;
+    .last-header {
+      margin-top: 5px;
+      margin-bottom: 30px;
+      color: white;
+      background-color: $dominant-main;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    .will {
+      background-color: $dominant-gray;
+    }
+    .past {
+      background-color: $dominant-red;
+    }
+    .title {
+      .title-input {
         text-align: center;
+        border: 0;
+      }
+    }
+  }
+  .content-bottom {
+    ul {
+      margin: 0;
+      padding: 5px;
+      padding-left: 32px;
+      padding-right: 32px;
+      list-style: none;
+      text-align: left;
+    }
+    div {
+      width: 100%;
+      line-height: 23px;
+    }
+    li {
+      border-left-style: solid;
+      border-left-color: $dominant-main;
+      border-left-width: 3px;
+      margin: 0 0 50px 0;
+      padding: 0 20px 0px 10px;
+      .overview {
+        white-space: pre-line;
+      }
+    }
+    .group {
+      border-left-style: solid;
+      border-left-color: $dominant-main;
+      border-left-width: 3px;
+      .group-name {
         font-weight: bold;
-       }
-       :-moz-placeholder { /* older Firefox*/
-        font-size:14px;
-        color: #d0cdfa;
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bold;
-       }
-       ::-moz-placeholder { /* Firefox 19+ */ 
-        font-size: 14px;
-        color: #d0cdfa; 
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bold;
-       } 
-       :-ms-input-placeholder { 
-        font-size: 14px; 
-        color: #d0cdfa;
-        text-transform: uppercase;
-        text-align: center;
-        font-weight: bold;
-       }
-    .scroll-content{
-        padding: 0px !important;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .group-image {
+        max-height: 150px;
+        border-radius: 5%;
+        margin-bottom: 10px;
+      }
+      .group-intro {
+        white-space: pre-line;
+      }
     }
-    h6{
-        font-weight: bold;
-        text-align: center;
-        
-    }
-    ul{
-        background-color:rgb(238,242,252);
-        padding-left: 0px;
-    }
-    ion-label{
-        font-weight: bold;
-        color: $dominant-black;
-    }
-    ion-textarea
-    {   
-        padding-top: 10px;
-        padding-left: 20px;
-        padding-right: 20px;
-        height:400px;
-        .text-input{
-            height: 400px;
-        }
-        .input-cover{
-            height: 430px;
-        }
-    }
-    ion-grid{
-        color: $dominant-black;
-    }
-    span{
-        color: $dominant-black;
-    }
-    .card.overview {
-        height:400px
-    }
-    .card.actor {
-        height:400px
-    }
-    .ion-card-content{
-        height:300px
-    }
-    .item.year {
-        width: 50px
-        position relative;
-    }
-    .item.month {
-        width: 50px
-        position relative;
-    }
-    .item.day {
-        width: 50px
-        position relative;
-    }
+  }
 }

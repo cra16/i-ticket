@@ -1,110 +1,101 @@
 page-detail {
-    .header-img {
-        div.wrapper{
-            float:left;
-            position: relative;
-            overflow: hidden ;   
-        }
-        .max-img {
-            height: 230px;
-            width: 100vw ;
-            opacity:0.9;
-            filter: blur(10px) ;
-            transform: scale(1.05) ;   
-        }
-        .sub-img {
-            display: block;
-            position: absolute;
-            margin-left: auto;
-            margin-right: auto;
-            left: 0;
-            right: 0;
-            // width: 150px ;
-            height: 230*1.01px;
-        }  
+  .header-img {
+    div.wrapper {
+      float: left;
+      position: relative;
+      overflow: hidden;
     }
-
-    .header-content {
-        h2 {
-            margin-top: 5px;
-            margin-bottom: 5px;
-        }
-        .genreTime {
-            margin-top: 2px;
-            margin-bottom: 5px;
-            color: $dominant-gray;
-        }
-
-        .date {
-            margin-top: 30px;
-            margin-bottom: 5px;
-            color: $dominant-gray;
-        }
-        .last-header {
-            margin-top: 5px;
-            margin-bottom: 30px;
-            color : white ;
-            background-color : $dominant-main ;
-            box-shadow : 0px 5px 10px rgba(0, 0, 0, 0.1) ;
-        }
-        .will {
-            background-color:  $dominant-gray;
-        }
-        .past {
-            background-color: $dominant-red;
-        }
-        .title {
-            font-size: 20px;
-            margin-top: 0px;
-            font-weight: bold;
-        }
+    .max-img {
+      height: 230px;
+      width: 100vw;
+      opacity: 0.9;
+      filter: blur(10px);
+      transform: scale(1.05);
     }
-
-    .content-bottom {
-        ul {
-            margin: 0;
-            padding: 5px;
-            padding-left: 32px;
-            padding-right: 32px;
-            list-style: none;
-            text-align: left;
-        }
-
-        div {
-            width: 100%;
-            line-height: 23px;
-        }
-
-        li {
-            border-left-style: solid;
-            border-left-color: $dominant-main ;
-            border-left-width: 3px;
-            margin: 0 0 50px 0 ;
-            padding : 0 20px 0px 10px ;       
-            .overview {
-                white-space: pre-line ;
-            }
-
-        }
-        .group {
-            border-left-style: solid;
-            border-left-color: $dominant-main ;
-            border-left-width: 3px;
-            .group-name{
-                font-weight: bold;
-                font-size: 18px;
-                margin-bottom: 10px ;
-            }
-            .group-image {
-                max-height: 150px;
-                border-radius: 5%;
-                margin-bottom: 10px ;
-            }
-            .group-intro {
-                white-space: pre-line ;
-            }
-            
-        }
+    .sub-img {
+      display: block;
+      position: absolute;
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0; // width: 150px ;
+      height: 230*1.01px;
     }
-
+  }
+  .header-content {
+    h2 {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .genreTime {
+      margin-top: 2px;
+      margin-bottom: 5px;
+      color: $dominant-gray;
+    }
+    .date {
+      margin-top: 30px;
+      margin-bottom: 5px;
+      color: $dominant-gray;
+    }
+    .last-header {
+      margin-top: 5px;
+      margin-bottom: 30px;
+      color: white;
+      background-color: $dominant-main;
+      box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    .will {
+      background-color: $dominant-gray;
+    }
+    .past {
+      background-color: $dominant-red;
+    }
+    .title {
+      font-size: 20px;
+      margin-top: 0px;
+      font-weight: bold;
+    }
+  }
+  .content-bottom {
+    ul {
+      margin: 0;
+      padding: 5px;
+      padding-left: 32px;
+      padding-right: 32px;
+      list-style: none;
+      text-align: left;
+    }
+    div {
+      width: 100%;
+      line-height: 23px;
+    }
+    li {
+      border-left-style: solid;
+      border-left-color: $dominant-main;
+      border-left-width: 3px;
+      margin: 0 0 50px 0;
+      padding: 0 20px 0px 10px;
+      .overview {
+        white-space: pre-line;
+      }
+    }
+    .group {
+      border-left-style: solid;
+      border-left-color: $dominant-main;
+      border-left-width: 3px;
+      .group-name {
+        font-weight: bold;
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      .group-image {
+        max-height: 150px;
+        border-radius: 5%;
+        margin-bottom: 10px;
+      }
+      .group-intro {
+        white-space: pre-line;
+      }
+    }
+  }
 }

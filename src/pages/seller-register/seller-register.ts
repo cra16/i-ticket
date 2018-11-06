@@ -42,6 +42,7 @@ export class SellerRegisterPage {
   imgUrl: string;
   accountNumber: string;
   uid: any;
+  groupname: any;
 
   select_seats: Array<any>; // 좌석표 select됀 정보값 array
   col: Array<any> = Array(12).fill(0); // 1줄당 좌석 갯수 
@@ -57,7 +58,7 @@ export class SellerRegisterPage {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
-    this.screen.lock('portrait');
+    // this.screen.lock('portrait');
 
     // this.initialize_seat();
     //장르와 장소 공연상태 목록 

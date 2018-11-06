@@ -1,31 +1,64 @@
 <ion-header>
     <ion-navbar>
-      <span class="title">공연 정보 등록</span>
+      <div class="title">공연 정보 등록</div>
     </ion-navbar>
   </ion-header>
   
-  <ion-content padding>
-    <ion-card>
-      <!-- 사진 추가 기능 -->
-      <ion-item>
-        <img [src]="image" style="width: 100%" [hidden]="image == null">
-        <h3 [hidden]="image != null" style="text-align:center;">이미지를 추가 해주세요.</h3>
-      </ion-item>
-      <ion-item style="text-align:center;">
-        <button ion-button (click)="presentActionSheet()">
-          <ion-icon name="add">
-          </ion-icon> 사진추가
-        </button>
-        <!-- 웹은 dropzone 으로 구현을 해보자` -->
-      </ion-item>
-  
+  <ion-content>
+    <div class="header-img" (click)="presentActionSheet()">
+      <div class='wrapper'>
+        <!-- image -->
+        <img class="max-img" [src]="image ? image : 'https://firebasestorage.googleapis.com/v0/b/iticket-282a8.appspot.com/o/defaultImage.jpg?alt=media&token=6a7263a8-4127-40bc-b65a-7c2d5335fe33'">
+      </div>
+      <img class="sub-img" [src]="image ? image : 'https://firebasestorage.googleapis.com/v0/b/iticket-282a8.appspot.com/o/defaultImage.jpg?alt=media&token=6a7263a8-4127-40bc-b65a-7c2d5335fe33'">
+    </div>
+    <ion-grid class="header-content">
+      <ion-row justify-content-center>
+        <h2 class="title">
+          <input class="title-input" placeholder="공연 제목을 입력해주세요." [(ngModel)]='title'>
+        </h2>
+      </ion-row>
+    </ion-grid>
+    <div class="content-bottom">
+      <ul>
+        <li>
+          <div class="overview">
+            <ion-label>어떤 공연인가요?</ion-label>
+            <ion-textarea rows="10" maxlength="1100" type="text" placeholder="공연 정보를 소개해주세요.(1100자 이내)" [(ngModel)]="overview"></ion-textarea>
+            <!-- {{concert.overview}} -->
+          </div>
+        </li>
+        <li>
+          <div class="director">
+            <ion-label>감독 및 연출은 누구인가요?</ion-label>
+            <ion-input type="text" placeholder="VAM, 즉흥적새벽두시, Zizzy ..." [(ngModel)]="director"></ion-input>
+            <!-- 감독 및 연출: {{concert.director}} -->
+          </div>
+          <div class="actor">
+            <ion-label>어떤 분들이 출연을 하나요?</ion-label>
+            <ion-input type="text" placeholder="VAM, 즉흥적새벽두시, 미르 ..." [(ngModel)]="actor"></ion-input>
+          </div>
+          <div class="location">
+            <ion-label>공연은 어디서 하죠?</ion-label>
+            <!-- <ion-select [(ngModel)]="location" placeholder="장소">
+              <ion-option *ngFor="let location of locations">{{location.location}}</ion-option>
+            </ion-select>
+            <ion-input *ngIf="location=='직접입력'" [(ngModel)]="location2" type="text" placeholder="기타장소"></ion-input> -->
+          </div>
+          <br>
+          <div>회차정보:</div>
+          <!-- <div *ngFor="let date of concert.date; let i = index;">{{i+1}}회차 : {{date | date:'yyyy년 MM월 dd일 hh시 mm분'}}</div> -->
+        </li>
+        <!-- 단체(동아리) 소개 시작 -->
+        <li class="group">
+          <div class="group-name">{{user.getGroupName()}}</div>
+            <img class="group-image" [src]="user.getSellerImg()">
+          <div class="group-intro">{{user.getSellerIntroduce()}}</div>
+        </li>
+      </ul>
+    </div>
+    <ion-card>  
       <ion-grid style="text-align:center;" >
-        <!-- 공연제목 입력 -->
-        <ion-row>
-          <ion-item >
-            <ion-input type="text" placeholder="공연 제목" [(ngModel)]="title"></ion-input>
-          </ion-item>
-        </ion-row>
         <!-- 공연일시 선택 -->
         <ion-row>
           <ion-item>
@@ -116,22 +149,6 @@
         </ion-item>
       </ion-grid>
     </ion-card>
-    <!-- 공연정보 입력창 -->
-    <h6>공연정보</h6>
-    <ul>
-      <span>
-        <ion-textarea rows="20" maxlength="1100" type="text" placeholder="공연 정보를 소개해주세요.(1100자 이내)" [(ngModel)]="overview"></ion-textarea>
-      </span>
-    </ul>
-    <!-- 출연진 정보 입력창 -->
-    <ul style="text-align:center">
-      <span >감독 및 연출
-        <ion-input type="text" placeholder="김태호" [(ngModel)]="director"></ion-input>
-      </span>
-      <span >출연진
-        <ion-input type="text" placeholder="유재석, 박명수, 정준하, 하하, 양세형, 조세호" [(ngModel)]="actor"></ion-input>
-      </span>
-    </ul>
     <!-- 판매 등록 버튼 -->
     <ion-grid>
       <ion-row justify-content-center>

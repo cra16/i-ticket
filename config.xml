@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.cra.iticket" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.cra.iticket" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>아이티켓</name>
     <description>대학교 공연을 위한 공연 정보 및 예매 플랫폼 어플리케이션입니다.</description>
     <author email="craiticket@gmail.com" href="http://github.com/HGU-CRA/">HGU-CRA</author>
@@ -33,7 +33,7 @@
         <icon height="100" src="resources/ios/icon/icon-50@2x.png" width="100" />
         <icon height="60" src="resources/ios/icon/icon-60.png" width="60" />
         <icon height="120" src="resources/ios/icon/icon-60@2x.png" width="120" />
-        <icon height="180" src="resources/ios/icon/icon-60@3x.png" width="180" />
+        <icon height="180" src="resources/ios/icon/icon-60@3x.png" width="180" /> v
         <icon height="72" src="resources/ios/icon/icon-72.png" width="72" />
         <icon height="144" src="resources/ios/icon/icon-72@2x.png" width="144" />
         <icon height="76" src="resources/ios/icon/icon-76.png" width="76" />
@@ -42,7 +42,7 @@
         <icon height="29" src="resources/ios/icon/icon-small.png" width="29" />
         <icon height="58" src="resources/ios/icon/icon-small@2x.png" width="58" />
         <icon height="87" src="resources/ios/icon/icon-small@3x.png" width="87" />
-        <icon height="1024" src="resources/ios/icon/icon-1024.png" width="1024" />
+        <icon height="1024" src="resources/ios/icon/icon-1024.png" width="1024" /> v
         <splash height="1136" src="resources/ios/splash/Default-568h@2x~iphone.png" width="640" />
         <splash height="1334" src="resources/ios/splash/Default-667h.png" width="750" />
         <splash height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
