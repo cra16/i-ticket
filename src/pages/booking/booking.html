@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-navbar>
+    <span class="title">예약 진행</span>
+    <button class="top-button" menuToggle end>
+      <img src="assets/icon/icon-ticket.svg">
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!--ngswitch활용 front content내용 변경-->
+  <div [ngSwitch]="booking">
+    <div *ngSwitchCase="'viewing'">
+      <!--backGround 활용 상단 디자인 예정-->
+      <div class="concert-info">
+        <img class="concert-img" [src]="concert.img" />
+        <div class="concert-subinfo">
+          <div class="concert-title">{{concert.title}}</div>
+          <div class="concert-genre-time">{{concert.genre}} | {{concert.runningTime}}분</div>
+          <div class="concert-location">{{concert.location}}</div>
+          <div class="concert-director">{{concert.director}}</div>
+        </div>
+      </div>
+
+      <ion-card class="dateSegment">
+        <ion-segment>
+          <ion-segment-button [disabled]="ishere(day)" *ngFor="let day of days; let i = index" (click)=getList(day)>
+            {{day|date:'EEEEE'}}
+            <br>{{day|date:'dd'}}
+          </ion-segment-button>
+        </ion-segment>
+        <ion-item>
+          <ion-label item-centered>{{fullDate | date:'yyyy년 MM월 dd일'}}</ion-label>
+        </ion-item>
+      </ion-card>
+
+      <div *ngFor="let date of times; let i = index" class="datediv">
+        <ion-list *ngIf="getted_date[i]==getted_fulldate">
+          <ion-item class="dateItem">
+            <h3>{{i+1}}회차</h3>
+            <button item-centered ion-button (click)="selectDate(i, date)" class="dateButton">
+              {{concert['date'][i] | date:'hh:mm'}} - {{date | date:'hh:mm'}}
+            </button>
+            <!--좌석 갯수 정보필요-->
+            <!-- 쿼리로, 예약 가능한 자리 총 카운트  -->
+            <p>{{remained_seat[i]}}석/114석</p>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+
+    <div *ngSwitchCase="'seats'">
+      <ion-item class="seat-map">
+        <div class="top">
+          학관 104호
+          <p class="stage">STAGE</p>
+        </div>
+        <div class="lounge">
+          <ol class="boxs" *ngFor="let r of row; let i=index">
+            <li class="box" *ngFor="let c of col; let j=index">
+              <input type="checkbox" [disabled]="seats[12*i+j].status == ticket.VIP
+              || seats[12*i+j].status == ticket.BEFORE_PAYMENT || seats[12*i+j].status == ticket.DONE
+              || seats[12*i+j].status == ticket.EMPTY" [id]="12*i+j" (click)="changeStatus(i, j)">
+              <label style="font-size: 3px" [for]="12*i+j" [ngClass]="{not : seats[12*i+j].status == ticket.NOT,
+                          selected : seats[12*i+j].status == ticket.SELECTED,
+                          vip : seats[12*i+j].status == ticket.VIP,
+                          done : seats[12*i+j].status == ticket.BEFORE_PAYMENT || seats[12*i+j].status == ticket.DONE,
+                          empty : seats[12*i+j].status == ticket.EMPTY}">
+                <!-- {{seats[12*i+j].info}} -->
+              </label>
+            </li>
+          </ol>
+        </div>
+        <div class="ticket-info">
+          <ion-grid class="ticketGrid">
+            <ion-row class="sample">
+              <ion-col>
+                <label class="not"></label>&nbsp;&nbsp;AVAILABLE
+              </ion-col>
+              <ion-col class="margin">
+                <span class="done"></span>&nbsp;&nbsp;SELECTED
+              </ion-col>
+              <ion-col>
+                <span class="vip"></span>&nbsp;&nbsp;NOT AVAILABLE
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <h3>선택한 좌석</h3>
+            </ion-row>
+            <ion-row>
+              <ion-col class="seats">
+                <span *ngFor="let seat of selected_seat" class="selected_seat">{{seat.info}}</span>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-item>
+      <ion-grid class="pay-info">
+        <ion-row>
+          <ion-col class="priceTag">
+            결제 할 금액
+          </ion-col>
+          <ion-col class="priceView">
+            <span class="price">{{price}}원</span>
+            <span class="count">({{count}}명)</span>
+          </ion-col>
+          <ion-col class="Buybutton">
+            <button item-end class="btn-buy" (click)="buy()" [disabled]="price == 0">
+              구매하기
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

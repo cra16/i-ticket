@@ -24,14 +24,12 @@ export class ListPage {
   monthForView: Array<number> = Array(12).fill(0);
   year: any;
 
-  constructor(public navCtrl: NavController,
-    public afs: AngularFirestore,
-    public platform: Platform,
-    private screen: ScreenOrientation) {
+  constructor(public navCtrl: NavController, public afs: AngularFirestore,
+    public platform: Platform, private screen: ScreenOrientation) {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
-    // this.screen.lock('portrait');
+    this.screen.lock('portrait');
     let backAction = platform.registerBackButtonAction(() => {
       this.navCtrl.pop();
       backAction();
@@ -50,7 +48,7 @@ export class ListPage {
       console.log(data);
       this.num = data.length;
       this.list_time = data;
-      
+
       for (var i = 0; i < this.num; i++) {
         let time = new Date(this.list_time[i].date[0]);
         let month = time.getMonth();
@@ -61,11 +59,11 @@ export class ListPage {
         this.getYear(this.year);
       }
     });
-    this.groupnames = this.afs.collection('userProfile', ref => ref.where("isSeller","==",true).orderBy('name')).valueChanges();
+    this.groupnames = this.afs.collection('userProfile', ref => ref.where("isSeller", "==", true).orderBy('name')).valueChanges();
     console.log(this.list_time);
     console.log("이니셜 끝");
   }
-  getYear(year){
+  getYear(year) {
     this.year = year;
   }
 

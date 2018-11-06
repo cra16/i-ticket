@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-navbar>
+    <span class="title">티켓 정보</span>
+    <button class="top-button" menuToggle end>
+      <img src="assets/icon/icon-ticket.svg">
+    </button>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="mainframe">
+  <div class="frame" *ngFor="let info of info" [ngStyle]="{'background-image': 'url('+info.concert_obj['img']+')'}">
+    <div class="blur">
+      <div class="ticket">
+        <div class="header">
+        </div>
+        <div class="high">
+          <ion-row class="row1">
+            <ion-col> 
+              <ion-label class="ticketTitle">
+                TITLE :
+              </ion-label>
+              <p>{{ info.concert_obj['title'] }}</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="row2">
+            <ion-col col-4>
+              <ion-label>
+                LOCATION :
+              </ion-label>
+              {{ info.concert_obj['location'] }}
+            </ion-col>
+            <ion-col col-4>
+              <ion-label>
+                DATE :
+              </ion-label>
+              {{ info.date | date :"yy년 MM월dd일 " }}
+            </ion-col>
+            <ion-col col-4>
+              <ion-label>
+                TIME :
+              </ion-label>
+              {{info.date | date :'hh:mm'}} - {{endTime | date:'hh:mm'}}
+            </ion-col>
+          </ion-row>
+          <ion-row class="row3">
+            <ion-col>
+              <ion-label>
+                NAME :
+              </ion-label>
+              {{ user.obj['name'] }}
+            </ion-col>
+          </ion-row>
+          <ion-row class="row4">
+            <ion-col col-8>
+              <ion-label>
+                SEAT :
+              </ion-label>
+              <span *ngFor="let seat of info.seats">{{seat.info}} </span>
+            </ion-col>
+            <ion-col col-4>
+              <ion-label>
+                PRICE :
+              </ion-label>
+              {{ info.price }} 원
+            </ion-col>
+          </ion-row>
+        </div>
+        <div class="divider">
+          <div class="line"></div>
+        </div>
+        <div class="low">
+          <ion-row class="row3">
+            <ion-col>
+              <ion-label>
+                입금 계좌<span style="color:red;" *ngIf="info.status == ticket.BEFORE_PAYMENT">&nbsp;(입금기한: {{finalDate | date:'yy/MM/dd hh:mm까지'}})</span>
+              </ion-label>
+              {{ info.concert_obj['accountNumber'] }}
+            </ion-col>
+          </ion-row>
+          <ion-row class="row4">
+            <ion-col>
+              <ion-label>
+                PRICE :
+              </ion-label>
+              {{ info.price }} 원
+            </ion-col>
+            <ion-col>
+              <button [ngClass]="{red: info.status == ticket.BEFORE_PAYMENT, green: info.status != ticket.BEFORE_PAYMENT}" class="butt">
+                {{ info.status == ticket.BEFORE_PAYMENT ? '입금 대기중' : '발권 완료'}}
+              </button>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
