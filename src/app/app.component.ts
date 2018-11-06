@@ -11,6 +11,11 @@ import { DetailPage } from '../pages/detail/detail';
 import { SellerLoginPage } from '../pages/seller-login/seller-login';
 import { SellerRegisterPage } from '../pages/seller-register/seller-register';
 import { SellerMainPage } from '../pages/seller-main/seller-main';
+import { TicketInfoPage } from '../pages/ticket-info/ticket-info';
+import { SellerTicketManagePage } from '../pages/seller-ticket-manage/seller-ticket-manage';
+import { SettingPage } from '../pages/setting/setting';
+import { SellerSettingPage } from '../pages/seller-setting/seller-setting';
+import { SellerMyListPage } from '../pages/seller-my-list/seller-my-list' ;
 
 import { AuthProvider } from '../providers/auth/auth';
 import { UserProvider } from '../providers/user/user'
@@ -21,11 +26,9 @@ import { Observable } from 'rxjs/Observable';
 import firebase from 'firebase';
 import { AngularFireAction } from 'angularfire2/database/interfaces';
 import { Toast } from 'ionic-angular/components/toast/toast';
-import { SellerSettingPage } from '../pages/seller-setting/seller-setting';
-import { SellerMyListPage } from '../pages/seller-my-list/seller-my-list' ;
 
 import { firebaseKey } from '../key/firebaseKey';
-import { SettingPage } from '../pages/setting/setting';
+
 firebase.initializeApp({
   apiKey: firebaseKey['apiKey'],
   authDomain: firebaseKey['authDomain'],

@@ -66,6 +66,7 @@ export class SellerLoginPage {
       this.authProvider.loginUser(email, password).then(authData => {
         this.navCtrl.setRoot(SellerMainPage);
         this.loading.dismiss().then(() => {
+          // this.navCtrl.setRoot(MainPage);
         }).catch(error => {
           console.log("@ loading dismiss error : " + error);
         });

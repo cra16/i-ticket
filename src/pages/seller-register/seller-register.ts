@@ -53,12 +53,11 @@ export class SellerRegisterPage {
     public alertProvider: AlertProvider, public platform: Platform,
     public af: AngularFireDatabase, public alertCtrl: AlertController,
     public afs: AngularFirestore, public ticket: TicketProvider,
-    public user: UserProvider, private screen: ScreenOrientation,
-    ) {
+    public user: UserProvider, private screen: ScreenOrientation) {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
-    // this.screen.lock('portrait');
+    this.screen.lock('portrait');
 
     // this.initialize_seat();
     //장르와 장소 공연상태 목록 

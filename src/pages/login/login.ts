@@ -19,16 +19,15 @@ import firebase from 'firebase';
 export class LoginPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl: AlertController, public menu: MenuController,
-    public authProvider: AuthProvider, private screen: ScreenOrientation,
+    public auth: AuthProvider, private screen: ScreenOrientation,
     public userProvider: UserProvider) {
-      
     // Lock vertical screen
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
     // this.screen.lock('portrait');
 
-    this.menu=menu;
-    this.menu.enable(false,'myMenu');
+    this.menu = menu;
+    this.menu.enable(false, 'myMenu')
     // 위의 문장을 주석 처리하면 Sidemenu가 사용 가능해짐
   }
   
@@ -38,11 +37,11 @@ export class LoginPage {
 
   // 판매자 로그인 페이지로 이동
   goToSellerLoginPage() {
-    this.navCtrl.push(SellerLoginPage) ;
+    this.navCtrl.push(SellerLoginPage);
   }
 
   googleLogin() {
-    if (this.authProvider.googleLogin())
+    if (this.auth.googleLogin())
       this.navCtrl.setRoot(MainPage);
   }
 }

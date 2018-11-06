@@ -22,17 +22,14 @@ export class MainPage {
 	concerts: any = "now";
 	user_name: any;
 
-	constructor(public navCtrl: NavController,
-						public afs: AngularFirestore, 
-						public menu: MenuController,
-				public userProvider: UserProvider,
-				private screen: ScreenOrientation) {
+	constructor(public navCtrl: NavController, public afs: AngularFirestore, 
+		public menu: MenuController, public userProvider: UserProvider,
+		private screen: ScreenOrientation) {
 		// Lock vertical screen             
 		// 네이티브에서만 적용되는 기능,
 		// 마지막에 주석해제 하면 됨.
 		this.screen.lock('portraitv');
-
-    this.menu=menu;
+		this.menu=menu;
     this.menu.enable(true,'myMenu');
 		this.initializeApp();
 		this.initializeItems();

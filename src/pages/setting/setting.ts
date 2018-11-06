@@ -10,10 +10,8 @@ import { PolicyPage } from '../policy/policy';
 })
 export class SettingPage {
 
-  constructor(public navCtrl: NavController, 
-              public navParams: NavParams,
-              public modalCtrl: ModalController
-              ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
@@ -23,6 +21,6 @@ export class SettingPage {
   showPolicy() {
     this.navCtrl.push(PolicyPage)
   }
- 
+
 
 }

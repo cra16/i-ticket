@@ -27,7 +27,6 @@ export class SellerMainPage {
     this.menu=menu;
     this.menu.enable(true,'myMenu');
     this.initialize();
-    
     if (this.userProvider.getSellerIntroduce() == null) {
       const alert: Alert = this.alertCtrl.create({
         message: "단체 정보를 아직 입력하지 않으셨네요!",
@@ -41,7 +40,8 @@ export class SellerMainPage {
   initialize() {
     this.username = this.user.getGroupName();
     this.afs.collection('userProfile').doc(this.user.obj['uid'])
-      .collection('concerts',ref => ref.where('status','==','판매 중')).valueChanges().subscribe(data => {
+            .collection('concerts',ref => ref.where('status','==','판매 중'))
+            .valueChanges().subscribe(data => {
         this.concert_list = data ;
       }) ;
   }

@@ -38,13 +38,11 @@ export class SellerEditPage {
   num: number = 0;
   count_date: number = 0;
 
-
   constructor(public navCtrl: NavController, public user: UserProvider,
     public navParams: NavParams, public actionSheetCtrl: ActionSheetController,
     private camera: Camera, public alertCtrl: AlertController,
     public afs: AngularFirestore, public alertProvider: AlertProvider,
-    public platform: Platform, private screen: ScreenOrientation, 
-    ) {
+    public platform: Platform, private screen: ScreenOrientation ) {
     // Lock vertical screen             
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
@@ -119,7 +117,6 @@ export class SellerEditPage {
     let url;
     let update;
     let userupdate;
-
     //이미지를 새로 추가했을 시 사진을 다시 스토리지에 저장 후, 새로운 URL 데이터베이스에 저장
     if (this.image != null) {
       const storageRef2: firebase.storage.Reference = firebase.storage().ref('/picture/' + this.concert['title']);
@@ -129,7 +126,6 @@ export class SellerEditPage {
         //동시에 데이터베이스에 정보 업뎃
         update = this.afs.collection("concerts").doc(this.concert['id']).update(this.concert)
         url = this.afs.collection("concerts").doc(this.concert['id']).update({ img: this.imgUrl })
-
       }).catch(error => {
         console.log("@ uploadTask error : " + error);
       });
@@ -138,7 +134,6 @@ export class SellerEditPage {
     else if (this.image == null) {
       url = this.afs.collection("concerts").doc(this.concert['id']).update(this.concert)
     }
-
     userupdate = this.afs.collection('userProfile').doc(this.user.obj['uid']).collection('concerts').doc(this.concert['id']).update(this.concert)
     let alert = this.alertCtrl.create({
       title: '수정완료',

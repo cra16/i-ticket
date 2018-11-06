@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { ActionSheetController } from 'ionic-angular/components/action-sheet/action-sheet-controller';
-import { Camera } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera'; 
 import { AlertController } from 'ionic-angular/components/alert/alert-controller';
 import { AngularFirestore } from 'angularfire2/firestore';
 import firebase from 'firebase';
@@ -11,6 +11,8 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 // Provider
 import { UserProvider } from '../../providers/user/user';
 import { AlertProvider } from '../../providers/alert/alert';
+// Page
+import { SellerMainPage } from '../seller-main/seller-main';
 
 @Component({
   selector: 'page-seller-setting',
@@ -37,8 +39,9 @@ export class SellerSettingPage {
     // Lock vertical screen
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
-    //this.screen.lock('portrait');
+    this.screen.lock('portrait');
     this.user.getSellerImg() == 'null' ? this.imageChanged = false : this.imageChanged = true
+
     this.groupname = user.getGroupName();
     this.uid = user.getUID();
     // TODO: 코드 줄일 수 있을 듯 한데... by walter
@@ -120,6 +123,5 @@ export class SellerSettingPage {
       });
     }
     this.alertProvider.presentToast(editCompletedToastMessage);
-
   }
 }

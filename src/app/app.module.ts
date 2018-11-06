@@ -68,6 +68,8 @@ export const firebaseConfig = {
     SellerSettingPage,
     SellerMyListPage,
     StarReviewComponent,
+    PolicyPage,
+    SettingPage,
   ],
   imports: [
     BrowserModule,
@@ -105,6 +107,8 @@ export const firebaseConfig = {
     SellerResetPwdPage,
     SellerSignupPage,
     StarReviewComponent,
+    PolicyPage,
+    SettingPage,
   ],
   providers: [
     StatusBar,
