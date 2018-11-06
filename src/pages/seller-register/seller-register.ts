@@ -66,14 +66,18 @@ export class SellerRegisterPage {
       { genre: '연극', value: '연극' },
       { genre: '댄스', value: '댄스' },
       { genre: '콘서트', value: '콘서트' },
-      { genre: '아카펠라', value: '아카펠라' },
-      { genre: '클래식', value: '클래식' },
+      { genre: '리쿠르팅', value: '리쿠르팅'},
+      { genre: '전시회', value: '전시회'},
+      { genre: '학부행사', value: '학부행사'}
     ]
     this.locations = [
       { location: '학관 104호', value: '학관 104호' },
       { location: '오디토리움', value: '오디토리움' },
       { location: '학생회관 앞', value: '학생회관 앞' },
       { location: '야외공연장', value: '야외공연장' },
+      { location: '물음표카페', value: '물음표카페' },
+      { location: '평봉필드', value: '평봉필드' },
+      { location: '중구난방', value: '중구난방' },
       { location: '직접입력', value: this.location2 },
     ]
     this.statuses = [

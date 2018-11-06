@@ -37,7 +37,7 @@ export class SellerSettingPage {
     // Lock vertical screen
     // 네이티브에서만 적용되는 기능,
     // 마지막에 주석해제 하면 됨.
-    this.screen.lock('portrait');
+    //this.screen.lock('portrait');
     this.user.getSellerImg() == 'null' ? this.imageChanged = false : this.imageChanged = true
     this.groupname = user.getGroupName();
     this.uid = user.getUID();
