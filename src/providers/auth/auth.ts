@@ -83,7 +83,7 @@ export class AuthProvider {
       'webClientId': '545732523356-vin80v0rch347p7qaap3s1gbo2n9djo9.apps.googleusercontent.com'
     }).then((res) => {
       var isHandong = res.email;
-      var isHandongSplited = isHandong.split("@") // ~~~@handong.edu
+      var isHandongSplited = isHandong.split("@"); // ~~~@handong.edu
       if (isHandongSplited[1] == "handong.edu") {
         var provider = firebase.auth.GoogleAuthProvider.credential(res.idToken);
         firebase.auth().signInWithCredential(provider).then((success) => {

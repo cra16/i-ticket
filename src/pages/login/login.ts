@@ -18,7 +18,7 @@ import firebase from 'firebase';
 export class LoginPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public alertCtrl: AlertController, public menu: MenuController,
-    public auth: AuthProvider, private screen: ScreenOrientation,
+    public authProvider: AuthProvider, private screen: ScreenOrientation,
     public userProvider: UserProvider) {
     // Lock vertical screen
     // 네이티브에서만 적용되는 기능,
@@ -40,8 +40,8 @@ export class LoginPage {
   }
 
   googleLogin() {
-    //   if (this.auth.googleLogin())
-    //     this.navCtrl.setRoot(MainPage);
-    // }
+    if (this.authProvider.googleLogin())
+      this.navCtrl.setRoot(MainPage);
   }
 }
+
