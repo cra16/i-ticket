@@ -55,8 +55,8 @@
       <star-review [hidden]="concert_status=='판매 예정'" [uid]="uid" [concertId]="concertId"></star-review>
     </ion-row>
     <ion-row justify-content-center>
-      <button class="last-header" *ngIf="concert_status=='판매 중'" ion-button round small>
-        판매 중
+      <button class="last-header" *ngIf="concert_status=='판매 중'" [disabled]="user.getIsSeller()==true" ion-button round small (click)="goBookingPage(concert_idx)">
+        예매 하기
       </button>
       <button class="last-header will" *ngIf="concert_status=='판매 예정'" ion-button round small>
         판매 예정

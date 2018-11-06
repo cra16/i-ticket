@@ -5,6 +5,7 @@ import { DetailPage } from '../detail/detail';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
 import { Observable } from 'rxjs/Observable';
 import { UserProvider } from '../../providers/user/user';
+import { BookingPage } from '../booking/booking';
 import firebase from 'firebase';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
@@ -61,5 +62,8 @@ export class MainPage {
 	goDetailPage(slide) {
 		// 공연의 키값을 파라미터로 받아온다.
 		this.navCtrl.push(DetailPage, { concert_obj: slide })
+	}
+	goBookingPage(slide) {
+		this.navCtrl.push(BookingPage, { concert_obj: slide })
 	}
 }

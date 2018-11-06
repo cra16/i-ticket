@@ -10,6 +10,7 @@ import { Platform } from 'ionic-angular/platform/platform';
 import { Observable } from 'rxjs/Observable';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { SellerMainPage } from '../seller-main/seller-main';
+import { BookingPage } from '../booking/booking';
 
 @Component({
   selector: 'page-detail',
@@ -133,6 +134,9 @@ export class DetailPage {
 
   editItem() {
     this.navCtrl.setRoot(SellerEditPage, { concert_obj: this.concert })
+  }
+  goBookingPage() {
+    this.navCtrl.push(BookingPage, { concert_obj: this.concert });
   }
 
 }

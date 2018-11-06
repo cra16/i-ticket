@@ -31,6 +31,9 @@ import { SellerSettingPage } from '../pages/seller-setting/seller-setting';
 import { SellerSignupPage } from '../pages/seller-signup/seller-signup';
 import { SettingPage } from '../pages/setting/setting';
 import { PolicyPage } from '../pages/policy/policy';
+import { BookingPage } from '../pages/booking/booking';
+import { TicketInfoPage } from '../pages/ticket-info/ticket-info';
+import { SellerTicketManagePage } from '../pages/seller-ticket-manage/seller-ticket-manage';
 // Firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -70,6 +73,9 @@ export const firebaseConfig = {
     StarReviewComponent,
     PolicyPage,
     SettingPage,
+    BookingPage,
+    TicketInfoPage,
+    SellerTicketManagePage,
   ],
   imports: [
     BrowserModule,
@@ -94,6 +100,9 @@ export const firebaseConfig = {
     DetailPage,
     MainPage,
     MyListPage,
+    BookingPage,
+    TicketInfoPage,
+    SellerTicketManagePage,
     ListPage,
     LoginPage,
     PolicyPage,

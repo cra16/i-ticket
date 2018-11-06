@@ -16,6 +16,7 @@ import { SellerTicketManagePage } from '../pages/seller-ticket-manage/seller-tic
 import { SettingPage } from '../pages/setting/setting';
 import { SellerSettingPage } from '../pages/seller-setting/seller-setting';
 import { SellerMyListPage } from '../pages/seller-my-list/seller-my-list' ;
+import { BookingPage } from '../pages/booking/booking';
 
 import { AuthProvider } from '../providers/auth/auth';
 import { UserProvider } from '../providers/user/user'
