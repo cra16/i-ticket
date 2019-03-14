@@ -19,6 +19,8 @@ July 8, 2018 : change private to public
 
 Agust 13, 2018 : release 아이티켓 beta version on Playstore
 
+Now : stop project
+
 ## License
 Copyright (C) 2018-present HGU-CRA, i-ticket
 
